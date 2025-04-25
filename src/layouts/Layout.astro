@@ -4,7 +4,7 @@ const siteTitle = "ChristoLanguage";
 import '../styles/global.css';
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -18,29 +18,37 @@ import '../styles/global.css';
 
 		<title>{siteTitle}</title>
 	</head>
-	<body>
-		<header>
-			<div class="navbar-container">
-				<a href="/" class="site-title">{siteTitle}</a>
-				<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
-					<span class="hamburger"></span>
-					<span class="sr-only">Menu</span>
+	<body class="bg-background text-foreground font-sans flex flex-col min-h-screen transition-colors duration-200 ease-in-out">
+		<header class="sticky top-0 z-50 bg-card border-b border-border shadow-sm transition-colors duration-200 ease-in-out">
+			<div class="container mx-auto flex items-center justify-between p-4 relative">
+				<a href="/" class="font-serif text-2xl font-bold text-site-title tracking-wide">{siteTitle}</a>
+
+				{/* Mobile Nav Toggle - Keep class for JS */} 
+				<button class="nav-toggle md:hidden p-2 -mr-2" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+					<span class="block w-6 h-0.5 bg-primary relative">
+						<span class="hamburger-line absolute left-0 block w-full h-full bg-primary transition-transform duration-200 ease-in-out top-[-7px]"></span>
+						<span class="hamburger-line absolute left-0 block w-full h-full bg-primary transition-transform duration-200 ease-in-out top-[7px]"></span>
+					</span>
+					<span class="sr-only">Menu</span> {/* Replaced custom .sr-only with Tailwind utility */}
 				</button>
-				<nav id="nav-menu" class="nav-menu">
-					<ul>
-						<li><a href="/">Home</a></li>
-						<li><a href="/blog">Blog</a></li>
-						<li><a href="/shop">Shop</a></li>
-						<li><a href="/app">App</a></li>
-						<li><a href="/coaching">Coaching</a></li>
+
+				{/* Desktop Nav / Mobile Menu Container - Keep id & class for JS */}
+				<nav id="nav-menu" class="nav-menu hidden md:flex absolute md:relative top-full right-0 bg-card md:bg-transparent shadow-md md:shadow-none rounded-b-lg md:rounded-none min-w-[180px] md:min-w-0 flex-col md:flex-row p-4 md:p-0 z-40">
+					<ul class="flex flex-col md:flex-row list-none m-0 p-0 gap-2 md:gap-6">
+						{/* Example Nav Item Styling - Apply similarly to others */} 
+						<li><a href="/" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">Home</a></li>
+						<li><a href="/blog" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">Blog</a></li>
+						<li><a href="/shop" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">Shop</a></li>
+						<li><a href="/app" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">App</a></li>
+						<li><a href="/coaching" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">Coaching</a></li>
 					</ul>
 				</nav>
 			</div>
 		</header>
-		<main>
+		<main class="flex-grow container mx-auto p-4 md:p-8">
 			<slot />
 		</main>
-		<footer>
+		<footer class="bg-card text-secondary text-sm text-center p-4 border-t border-border mt-auto">
 			<p>&copy; {new Date().getFullYear()} {siteTitle}</p>
 		</footer>
 	</body>
@@ -49,16 +57,46 @@ import '../styles/global.css';
 <script is:inline>
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.getElementById('nav-menu');
-  navToggle?.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!expanded));
-    navMenu.classList.toggle('open');
-  });
-  // Optional: Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-      navMenu.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }
-  });
+  // Ensure navToggle exists before querying inside it
+	const hamburgerLines = navToggle ? Array.from(navToggle.querySelectorAll('.hamburger-line')) : [];
+
+  if (navToggle && navMenu) { // Ensure elements exist before adding listeners
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navMenu.classList.toggle('hidden');
+      navMenu.classList.toggle('flex');
+
+      // Basic hamburger animation (optional)
+      // Check if hamburgerLines array has elements before accessing
+      if (hamburgerLines.length >= 2) {
+        if (!expanded) {
+          hamburgerLines[0].style.transform = 'translateY(7px) rotate(45deg)';
+          hamburgerLines[1].style.transform = 'translateY(-7px) rotate(-45deg)';
+        } else {
+          hamburgerLines[0].style.transform = 'translateY(0) rotate(0)';
+          hamburgerLines[1].style.transform = 'translateY(0) rotate(0)';
+        }
+      }
+    });
+
+    // Close menu when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      // Check if navMenu exists and target is not inside toggle or menu
+      const isClickOutside = navMenu && !navMenu.contains(e.target) && !navToggle.contains(e.target);
+      const isMenuOpen = navMenu && !navMenu.classList.contains('hidden');
+
+      if (isMenuOpen && isClickOutside) {
+        navMenu.classList.add('hidden');
+        navMenu.classList.remove('flex');
+        navToggle.setAttribute('aria-expanded', 'false');
+        
+        // Reset hamburger animation
+        if (hamburgerLines.length >= 2) {
+            hamburgerLines[0].style.transform = 'translateY(0) rotate(0)';
+            hamburgerLines[1].style.transform = 'translateY(0) rotate(0)';
+        }
+      }
+    });
+  }
 </script>
