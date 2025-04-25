@@ -1,0 +1,48 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+    <article class="max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">{post.data.title}</h1>
+        <p class="text-sm text-foreground/80 mb-6">
+            Published on: {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {post.data.updatedDate && (
+                <span class="italic"> | Updated on: {post.data.updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            )}
+        </p>
+        
+        <div class="prose prose-lg lg:prose-xl max-w-none 
+                    prose-headings:font-serif prose-headings:text-foreground 
+                    prose-p:text-foreground/90 
+                    prose-a:text-link hover:prose-a:text-link-hover 
+                    prose-strong:text-foreground 
+                    prose-blockquote:border-primary prose-blockquote:text-foreground/80 
+                    prose-code:text-foreground prose-code:bg-muted prose-code:p-1 prose-code:rounded prose-code:font-mono prose-code:text-sm
+                    prose-li:marker:text-primary">
+            <Content />
+        </div>
+
+        {post.data.tags && (
+            <div class="mt-10 pt-6 border-t border-border">
+                <span class="font-semibold text-foreground mr-2">Tags:</span>
+                {post.data.tags.map((tag: string) => (
+                    <span class="inline-block bg-muted text-muted-foreground text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">{tag}</span>
+                ))}
+            </div>
+        )}
+    </article>
+</Layout> 

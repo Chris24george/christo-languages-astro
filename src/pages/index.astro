@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -7,8 +8,8 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
 	<!-- Hero Section -->
-	<section class="text-center py-16 px-4">
-		<h1 class="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
+	<section class="text-center py-12 px-8">
+		<h1 class="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 max-w-sm md:max-w-2xl mx-auto">
 			Master Languages with Christo
 		</h1>
 		<p class="text-lg text-foreground max-w-2xl mx-auto mb-8">
@@ -30,26 +31,31 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
+	<!-- Newsletter Signup Section -->
+	<section class="max-w-3xl mx-auto py-12 px-4">
+		<NewsletterSignup />
+	</section>
+
 	<!-- Services Section -->
 	<section id="services" class="max-w-5xl mx-auto py-12 px-4 text-center">
 		<h2 class="text-3xl font-serif font-bold text-foreground mb-10">Core Offerings</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg shadow-sm flex flex-col">
+			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col">
 				<h3 class="text-xl font-serif font-semibold text-foreground mb-3">Insightful Blog Content</h3>
 				<p class="flex-grow text-foreground/90 mb-4">Tips, strategies, and stories to enhance your language journey.</p>
 				<a href="/blog" class="mt-auto font-medium text-link hover:text-link-hover">Learn More &rarr;</a>
 			</div>
-			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg shadow-sm flex flex-col">
+			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col">
 				<h3 class="text-xl font-serif font-semibold text-foreground mb-3">Premium Learning Materials</h3>
 				<p class="flex-grow text-foreground/90 mb-4">Purchase curated guides and packs to accelerate your progress.</p>
 				<a href="/shop" class="mt-auto font-medium text-link hover:text-link-hover">Learn More &rarr;</a>
 			</div>
-			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg shadow-sm flex flex-col">
+			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col">
 				<h3 class="text-xl font-serif font-semibold text-foreground mb-3">iOS Language Learning App</h3>
 				<p class="flex-grow text-foreground/90 mb-4">Interactive tools and exercises on the go (Coming Soon!).</p>
 				<a href="/app" class="mt-auto font-medium text-link hover:text-link-hover">Learn More &rarr;</a>
 			</div>
-			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg shadow-sm flex flex-col">
+			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col">
 				<h3 class="text-xl font-serif font-semibold text-foreground mb-3">One-on-One Coaching</h3>
 				<p class="flex-grow text-foreground/90 mb-4">Personalized sessions tailored to your specific goals.</p>
 				<a href="/coaching" class="mt-auto font-medium text-link hover:text-link-hover">Learn More &rarr;</a>
@@ -71,7 +77,7 @@ import Layout from '../layouts/Layout.astro';
 	<section id="shop" class="max-w-5xl mx-auto py-12 px-4 text-center">
 		<h2 class="text-3xl font-serif font-bold text-foreground mb-10">Premium Materials</h2>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg shadow-sm flex flex-col text-center">
+			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col text-center">
 				<span class="text-4xl mb-4">📚</span>
 				<h3 class="text-xl font-serif font-semibold text-foreground mb-2">Comprehensive Grammar Guide</h3>
 				<p class="text-foreground/90 mb-4 flex-grow">Master complex grammar points with clear explanations.</p>
@@ -80,7 +86,7 @@ import Layout from '../layouts/Layout.astro';
 					Purchase Now
 				</button>
 			</div>
-			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg shadow-sm flex flex-col text-center">
+			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col text-center">
 				<span class="text-4xl mb-4">🗣️</span>
 				<h3 class="text-xl font-serif font-semibold text-foreground mb-2">Vocabulary Builder Pack</h3>
 				<p class="text-foreground/90 mb-4 flex-grow">Expand your lexicon with thematic vocabulary sets.</p>
@@ -89,7 +95,7 @@ import Layout from '../layouts/Layout.astro';
 					Purchase Now
 				</button>
 			</div>
-			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg shadow-sm flex flex-col text-center">
+			<div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col text-center">
 				<span class="text-4xl mb-4">🔊</span>
 				<h3 class="text-xl font-serif font-semibold text-foreground mb-2">Pronunciation Masterclass</h3>
 				<p class="text-foreground/90 mb-4 flex-grow">Refine your accent and improve intelligibility.</p>

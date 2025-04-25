@@ -2,6 +2,7 @@
 // You can import components or define variables here if needed
 const siteTitle = "ChristoLanguage";
 import '../styles/global.css';
+// Removed NewsletterSignup import
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -18,29 +19,41 @@ import '../styles/global.css';
 
 		<title>{siteTitle}</title>
 	</head>
-	<body class="bg-background text-foreground font-sans flex flex-col min-h-screen transition-colors duration-200 ease-in-out">
-		<header class="sticky top-0 z-50 bg-card border-b border-border shadow-sm transition-colors duration-200 ease-in-out">
+	<body class="text-foreground font-sans flex flex-col min-h-screen transition-colors duration-200 ease-in-out bg-gradient-to-b from-card to-background">
+		<!-- Removed Overlay -->
+
+		<header class="sticky top-0 z-50 bg-header-bg backdrop-blur-md border-b border-border transition-colors duration-200 ease-in-out">
 			<div class="container mx-auto flex items-center justify-between p-4 relative">
 				<a href="/" class="font-serif text-2xl font-bold text-site-title tracking-wide">{siteTitle}</a>
 
-				{/* Mobile Nav Toggle - Keep class for JS */} 
-				<button class="nav-toggle md:hidden p-2 -mr-2" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
-					<span class="block w-6 h-0.5 bg-primary relative">
-						<span class="hamburger-line absolute left-0 block w-full h-full bg-primary transition-transform duration-200 ease-in-out top-[-7px]"></span>
-						<span class="hamburger-line absolute left-0 block w-full h-full bg-primary transition-transform duration-200 ease-in-out top-[7px]"></span>
-					</span>
-					<span class="sr-only">Menu</span> {/* Replaced custom .sr-only with Tailwind utility */}
+				{/* Mobile Nav Toggle */}
+				<button id="nav-toggle" class="md:hidden p-2 -mr-2 focus:outline-none focus:ring-2 focus:ring-primary rounded" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+					{/* Hamburger Icon Container */}
+					<div class="w-6 h-6 flex flex-col justify-around items-center relative">
+                        {/* Simplified hamburger lines */}
+						<span class="hamburger-line top block w-full h-0.5 bg-primary rounded transition-transform duration-300 ease-in-out"></span>
+						<span class="hamburger-line middle block w-full h-0.5 bg-primary rounded transition-opacity duration-300 ease-in-out"></span>
+						<span class="hamburger-line bottom block w-full h-0.5 bg-primary rounded transition-transform duration-300 ease-in-out"></span>
+					</div>
+					<span class="sr-only">Menu</span>
 				</button>
 
-				{/* Desktop Nav / Mobile Menu Container - Keep id & class for JS */}
-				<nav id="nav-menu" class="nav-menu hidden md:flex absolute md:relative top-full right-0 bg-card md:bg-transparent shadow-md md:shadow-none rounded-b-lg md:rounded-none min-w-[180px] md:min-w-0 flex-col md:flex-row p-4 md:p-0 z-40">
-					<ul class="flex flex-col md:flex-row list-none m-0 p-0 gap-2 md:gap-6">
-						{/* Example Nav Item Styling - Apply similarly to others */} 
-						<li><a href="/" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">Home</a></li>
-						<li><a href="/blog" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">Blog</a></li>
-						<li><a href="/shop" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">Shop</a></li>
-						<li><a href="/app" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">App</a></li>
-						<li><a href="/coaching" class="block font-medium text-link hover:text-link-hover hover:bg-muted focus:bg-muted focus:text-link-hover focus:outline-none rounded px-2 py-1 transition-colors duration-200">Coaching</a></li>
+				{/* Desktop Nav / Mobile Dropdown Menu - Added transform classes */} 
+				<nav 
+                    id="nav-menu" 
+                    class="absolute top-full right-0 mt-1 md:mt-0 w-48 md:w-auto 
+                           bg-card md:bg-transparent shadow-lg md:shadow-none rounded-md md:rounded-none 
+                           hidden md:relative md:flex flex-col md:flex-row z-40 
+                           transform origin-top-right transition-all duration-200 ease-in-out 
+                           opacity-0 scale-95 md:opacity-100 md:scale-100 md:transform-none"
+                >
+					<ul class="flex flex-col py-2 md:py-0 md:flex-row list-none m-0 md:gap-6">
+						{/* Kept Updated Nav Item Styling */}
+						<li><a href="/" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Home</a></li>
+						<li><a href="/blog" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Blog</a></li>
+						<li><a href="/shop" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Shop</a></li>
+						<li><a href="/app" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">App</a></li>
+						<li><a href="/coaching" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Coaching</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -48,55 +61,84 @@ import '../styles/global.css';
 		<main class="flex-grow container mx-auto p-4 md:p-8">
 			<slot />
 		</main>
-		<footer class="bg-card text-secondary text-sm text-center p-4 border-t border-border mt-auto">
-			<p>&copy; {new Date().getFullYear()} {siteTitle}</p>
+		<footer class="bg-card text-secondary-foreground text-sm text-center p-4 border-t border-border mt-auto">
+      {/* Removed the NewsletterSignup component and wrapper div */}
+      <div class="border-t border-border pt-4 mt-8">
+        <p>&copy; {new Date().getFullYear()} {siteTitle}</p>
+      </div>
 		</footer>
 	</body>
 </html>
 
 <script is:inline>
-  const navToggle = document.querySelector('.nav-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  // Ensure navToggle exists before querying inside it
-	const hamburgerLines = navToggle ? Array.from(navToggle.querySelectorAll('.hamburger-line')) : [];
+  document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const hamburgerLines = navToggle ? {
+        top: navToggle.querySelector('.hamburger-line.top'),
+        middle: navToggle.querySelector('.hamburger-line.middle'),
+        bottom: navToggle.querySelector('.hamburger-line.bottom'),
+    } : null;
 
-  if (navToggle && navMenu) { // Ensure elements exist before adding listeners
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      navMenu.classList.toggle('hidden');
-      navMenu.classList.toggle('flex');
-
-      // Basic hamburger animation (optional)
-      // Check if hamburgerLines array has elements before accessing
-      if (hamburgerLines.length >= 2) {
-        if (!expanded) {
-          hamburgerLines[0].style.transform = 'translateY(7px) rotate(45deg)';
-          hamburgerLines[1].style.transform = 'translateY(-7px) rotate(-45deg)';
-        } else {
-          hamburgerLines[0].style.transform = 'translateY(0) rotate(0)';
-          hamburgerLines[1].style.transform = 'translateY(0) rotate(0)';
-        }
-      }
-    });
-
-    // Close menu when clicking outside on mobile
-    document.addEventListener('click', (e) => {
-      // Check if navMenu exists and target is not inside toggle or menu
-      const isClickOutside = navMenu && !navMenu.contains(e.target) && !navToggle.contains(e.target);
-      const isMenuOpen = navMenu && !navMenu.classList.contains('hidden');
-
-      if (isMenuOpen && isClickOutside) {
-        navMenu.classList.add('hidden');
-        navMenu.classList.remove('flex');
-        navToggle.setAttribute('aria-expanded', 'false');
+    function toggleMenu(show) {
+        if (!navMenu || !navToggle || !hamburgerLines) return;
         
-        // Reset hamburger animation
-        if (hamburgerLines.length >= 2) {
-            hamburgerLines[0].style.transform = 'translateY(0) rotate(0)';
-            hamburgerLines[1].style.transform = 'translateY(0) rotate(0)';
+        const expanded = show;
+        navToggle.setAttribute('aria-expanded', String(expanded));
+
+        if (expanded) {
+            navMenu.classList.remove('hidden');
+            // Force reflow before adding classes for transition
+            void navMenu.offsetWidth; 
+            navMenu.classList.add('flex', 'opacity-100', 'scale-100');
+            navMenu.classList.remove('opacity-0', 'scale-95');
+
+            // Animate hamburger to 'X' - Adjusted translateY values to 8px
+            hamburgerLines.top.style.transform = 'translateY(8px) rotate(45deg)';
+            hamburgerLines.middle.style.opacity = '0';
+            hamburgerLines.bottom.style.transform = 'translateY(-8px) rotate(-45deg)';
+        } else {
+            navMenu.classList.add('opacity-0', 'scale-95');
+            navMenu.classList.remove('opacity-100', 'scale-100');
+            
+            // Wait for transition before hiding
+            setTimeout(() => {
+                // Only hide if it wasn't opened again quickly
+                if (navToggle.getAttribute('aria-expanded') === 'false') { 
+                    navMenu.classList.add('hidden');
+                    navMenu.classList.remove('flex');
+                }
+            }, 200); // Match transition duration
+
+            // Reset hamburger icon
+            hamburgerLines.top.style.transform = '';
+            hamburgerLines.middle.style.opacity = '1';
+            hamburgerLines.bottom.style.transform = '';
         }
-      }
-    });
-  }
+    }
+
+    if (navToggle && navMenu && hamburgerLines) {
+      navToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); 
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        toggleMenu(!isExpanded);
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        const isMenuOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        const isClickOutside = !navToggle.contains(e.target) && !navMenu.contains(e.target);
+        if (isMenuOpen && isClickOutside) {
+          toggleMenu(false);
+        }
+      });
+
+      // Close menu on escape key press
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+          toggleMenu(false);
+        }
+      });
+    }
+  });
 </script>
