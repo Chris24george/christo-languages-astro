@@ -20,14 +20,22 @@ import '../styles/global.css';
 	</head>
 	<body>
 		<header>
-			<h1>{siteTitle}</h1>
-			<nav>
-				<a href="/">Home</a>
-				<a href="/blog">Blog</a>
-				<a href="/shop">Shop</a>
-				<a href="/app">App</a>
-				<a href="/coaching">Coaching</a>
-			</nav>
+			<div class="navbar-container">
+				<a href="/" class="site-title">{siteTitle}</a>
+				<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+					<span class="hamburger"></span>
+					<span class="sr-only">Menu</span>
+				</button>
+				<nav id="nav-menu" class="nav-menu">
+					<ul>
+						<li><a href="/">Home</a></li>
+						<li><a href="/blog">Blog</a></li>
+						<li><a href="/shop">Shop</a></li>
+						<li><a href="/app">App</a></li>
+						<li><a href="/coaching">Coaching</a></li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 		<main>
 			<slot />
@@ -37,3 +45,20 @@ import '../styles/global.css';
 		</footer>
 	</body>
 </html>
+
+<script is:inline>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  navToggle?.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
+    navMenu.classList.toggle('open');
+  });
+  // Optional: Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+      navMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
