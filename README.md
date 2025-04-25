@@ -1,48 +1,79 @@
-# Astro Starter Kit: Basics
+# Christo Languages
 
-```sh
-pnpm create astro@latest -- --template basics
+Master Languages with Christo is your hub for effective language learning through expert coaching, insightful blog content, and practical tools.
+
+## 🌟 Project Overview
+This site provides:
+- **Insightful Blog Content:** Tips, strategies, and stories to enhance your language journey.
+- **Premium Learning Materials:** Curated guides and packs to accelerate your progress.
+- **iOS Language Learning App:** Interactive tools and exercises (coming soon).
+- **One-on-One Coaching:** Personalized sessions tailored to your goals.
+
+## 🗂️ Project Structure
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
+christo-languages-v2/
+├── public/           # Static assets (favicon, etc.)
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/       # Images, SVGs, etc.
+│   ├── components/   # Reusable UI components
+│   ├── layouts/      # Site layout components
+│   ├── pages/        # Main site pages (routes)
+│   └── styles/       # Global and component styles
+├── package.json      # Project metadata and scripts
+├── astro.config.mjs  # Astro configuration
+├── tsconfig.json     # TypeScript configuration
+└── README.md         # Project documentation
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🚀 Features
+- **Blog:** Articles on language learning techniques, culture, and personal experiences (`/blog`)
+- **Shop:** Purchase premium materials and guides (`/shop`)
+- **App:** iOS app for language learning (coming soon) (`/app`)
+- **Coaching:** Book personalized coaching sessions (`/coaching`)
 
-## 🧞 Commands
+## 🧑‍💻 Getting Started
+1. **Install dependencies:**
+   ```sh
+   pnpm install
+   ```
+2. **Start the development server:**
+   ```sh
+   pnpm dev
+   ```
+   Visit [localhost:4321](http://localhost:4321) in your browser.
 
-All commands are run from the root of the project, from a terminal:
+3. **Build for production:**
+   ```sh
+   pnpm build
+   ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+4. **Preview the production build:**
+   ```sh
+   pnpm preview
+   ```
 
-## 👀 Want to learn more?
+## 📦 Scripts
+| Command         | Action                                    |
+|-----------------|-------------------------------------------|
+| `pnpm install`  | Install dependencies                      |
+| `pnpm dev`      | Start local dev server                    |
+| `pnpm build`    | Build your production site to `./dist/`   |
+| `pnpm preview`  | Preview your build locally                |
+| `pnpm astro ...`| Run Astro CLI commands                    |
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🛠️ Tech Stack
+- [Astro](https://astro.build/) (static site generator)
+- [TypeScript](https://www.typescriptlang.org/) (strict config)
+- [pnpm](https://pnpm.io/) (package manager)
+- Custom CSS (see `src/styles/global.css`)
+
+## 📁 Assets & Branding
+- Custom favicon and SVG assets in `public/` and `src/assets/`
+
+## 🙏 Acknowledgments
+- Built with [Astro](https://astro.build/)
+- Inspired by language learners everywhere
+
+---
+
+Feel free to contribute or reach out for collaboration!
