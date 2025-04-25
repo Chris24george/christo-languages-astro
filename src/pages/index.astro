@@ -1,5 +1,4 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -7,5 +6,95 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<!-- Hero Section -->
+	<section class="hero">
+		<h1>Master Languages with Christo</h1>
+		<p>Your hub for effective language learning through expert coaching, insightful blog content, and practical tools.</p>
+		<div class="cta-buttons">
+			<a href="#services" class="button primary">Explore Services</a>
+			<a href="/blog" class="button secondary">Read the Blog</a>
+		</div>
+	</section>
+
+	<!-- Services Section -->
+	<section id="services" class="services">
+		<h2>Core Offerings</h2>
+		<div class="grid">
+			<div class="card">
+				<h3>Insightful Blog Content</h3>
+				<p>Tips, strategies, and stories to enhance your language journey.</p>
+				<a href="/blog" class="learn-more">Learn More &rarr;</a>
+			</div>
+			<div class="card">
+				<h3>Premium Learning Materials</h3>
+				<p>Purchase curated guides and packs to accelerate your progress.</p>
+				<a href="/shop" class="learn-more">Learn More &rarr;</a>
+			</div>
+			<div class="card">
+				<h3>iOS Language Learning App</h3>
+				<p>Interactive tools and exercises on the go (Coming Soon!).</p>
+				<a href="/app" class="learn-more">Learn More &rarr;</a>
+			</div>
+			<div class="card">
+				<h3>One-on-One Coaching</h3>
+				<p>Personalized sessions tailored to your specific goals.</p>
+				<a href="/coaching" class="learn-more">Learn More &rarr;</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Blog Section -->
+	<section class="blog-promo">
+		<h2>From the Blog</h2>
+		<p>Dive into articles covering learning techniques, cultural insights, and personal experiences.</p>
+		<!-- Placeholder for recent posts -->
+		<a href="/blog" class="button primary">Visit the Blog</a>
+	</section>
+
+	<!-- Premium Materials Section -->
+	<section id="shop" class="premium-materials">
+		<h2>Premium Materials</h2>
+		<div class="grid">
+			<div class="card product">
+				<!-- Icon placeholder -->
+				<span class="icon">📚</span>
+				<h3>Comprehensive Grammar Guide</h3>
+				<p>Master complex grammar points with clear explanations.</p>
+				<p class="price">$19.99</p>
+				<button class="button primary small">Purchase Now</button>
+			</div>
+			<div class="card product">
+				<!-- Icon placeholder -->
+				<span class="icon">🗣️</span>
+				<h3>Vocabulary Builder Pack</h3>
+				<p>Expand your lexicon with thematic vocabulary sets.</p>
+				<p class="price">$14.99</p>
+				<button class="button primary small">Purchase Now</button>
+			</div>
+			<div class="card product">
+				<!-- Icon placeholder -->
+				<span class="icon">🔊</span>
+				<h3>Pronunciation Masterclass</h3>
+				<p>Refine your accent and improve intelligibility.</p>
+				<p class="price">$24.99</p>
+				<button class="button primary small">Purchase Now</button>
+			</div>
+		</div>
+		 <a href="/shop" class="button secondary">View All Materials</a>
+	</section>
+
+	<!-- App Section -->
+	<section class="app-promo">
+		<h2>Get the iOS App</h2>
+		<p>Take your learning anywhere with our upcoming mobile application. Stay tuned!</p>
+		<a href="/app" class="button primary">Learn More</a>
+	</section>
+
+	<!-- Coaching Section -->
+	<section id="coaching" class="coaching-promo">
+		<h2>Personalized Coaching</h2>
+		<p>Ready to take your language skills to the next level? Book a personalized one-on-one session.</p>
+		<a href="/coaching" class="button primary">Book a Session</a>
+	</section>
+
 </Layout>
