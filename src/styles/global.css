@@ -6,60 +6,93 @@
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-serif: 'Playfair Display', serif;
 
-  /* Light Mode Colors */
-  --background: hsl(40 38% 97%); /* #f9f6ef */
-  --foreground: hsl(215 30% 22%); /* #2a3442 */
-  --card: hsl(39 38% 95%); /* #f5e9d7 */
-  --card-foreground: hsl(215 30% 22%); /* #2a3442 */
-  --popover: hsl(39 38% 95%); /* #f5e9d7 */
-  --popover-foreground: hsl(215 30% 22%); /* #2a3442 */
-  --primary: hsl(28 43% 37%); /* #6e4b2a */
-  --primary-foreground: hsl(39 38% 95%); /* #f5e9d7 */
-  --secondary: hsl(39 30% 90%); /* #ede3ce */
-  --secondary-foreground: hsl(28 43% 37%); /* #6e4b2a */
-  --muted: hsl(39 30% 93%); /* #f3e8d2 */
-  --muted-foreground: hsl(215 10% 45%); /* #5c6470 */
-  --accent: hsl(28 43% 90%); /* #e9dbc3 */
-  --accent-foreground: hsl(28 43% 37%); /* #6e4b2a */
-  --destructive: hsl(0 84.2% 60.2%); /* #f87171 */
-  --destructive-foreground: hsl(39 38% 95%); /* #f5e9d7 */
-  --border: hsl(40 17% 85%); /* Matches rgb(224, 219, 209) */
-  --input: hsl(39 20% 85%); /* #d2c2a2 */
-  --ring: hsl(28 43% 37%); /* #6e4b2a */
-  --header-bg: hsl(40 38% 98%); /* Slightly lighter than background */
+  /* Light Mode - Modern Slate Blue/Teal */
+  --background-start: hsl(210, 30%, 98%);
+  --background-end: hsl(200, 25%, 96%);
+  --background: hsl(210, 30%, 98%);
+  --foreground: hsl(215, 25%, 27%);
+  --card-foreground: hsl(215, 25%, 27%);
+  --popover: hsl(210, 25%, 99%);
+  --popover-foreground: hsl(215, 25%, 27%);
+  --primary: hsl(210, 70%, 50%);
+  --primary-foreground: hsl(210, 25%, 98%);
+  --secondary: hsl(210, 25%, 95%);
+  --secondary-foreground: hsl(210, 60%, 45%);
+  --muted: hsl(210, 20%, 94%);
+  --muted-foreground: hsl(215, 15%, 50%);
+  --accent: hsl(190, 60%, 50%);
+  --accent-foreground: hsl(210, 25%, 98%);
+  --destructive: hsl(0, 70%, 60%);
+  --destructive-foreground: hsl(210, 25%, 98%);
+  --border: hsl(210, 15%, 90%);
+  --input: hsl(210, 15%, 92%);
+  --ring: hsl(210, 70%, 50%);
+
+  /* Gradient Variables for Components */
+  --card-gradient: linear-gradient(160deg, hsl(210, 30%, 99%), hsl(200, 25%, 97%));
+  --header-gradient: linear-gradient(to bottom, hsla(210, 30%, 99%, 0.95), hsla(200, 25%, 98%, 0.92));
 
   /* Semantic Aliases */
-  --footer-bg: var(--card);
+  --footer-bg: var(--card-gradient);
   --header-border: var(--border);
   --footer-border: var(--border);
   --text-color: var(--foreground);
   --site-title-color: var(--primary);
   --link: var(--primary);
-  --link-hover: hsl(28 43% 27%); /* slightly darker brown */
+  --link-hover: hsl(210, 85%, 70%);
+}
+
+body {
+    background: linear-gradient(to bottom, var(--background-start), var(--background-end));
+    background-attachment: fixed; 
+}
+
+/* Apply gradients to elements in light mode */
+:root {
+  --card: var(--card-gradient);
+  --header-bg: var(--header-gradient);
+}
+/* We need to apply these gradients via Tailwind's theme extension or global styles */
+.bg-card {
+  background: var(--card-gradient);
+}
+.bg-header-bg\/80, .bg-header-bg {
+  background: var(--header-gradient);
+}
+.bg-footer-bg {
+  background: var(--footer-bg);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: hsl(30 15% 10%); /* Darker warm brown */
-    --foreground: hsl(40 30% 90%); /* Warm off-white */
-    --card: hsl(30 15% 16%); /* Lighter warm brown card */
-    --card-foreground: hsl(40 30% 90%); /* Match warm off-white */
-    --popover: hsl(30 15% 16%); /* Match card */
-    --popover-foreground: hsl(40 30% 90%); /* Match warm off-white */
-    --primary: hsl(28 55% 60%); /* Adjusted warm primary */
-    --primary-foreground: hsl(30 15% 10%); /* Match darker warm background */
-    --secondary: hsl(30 10% 20%); /* Muted warm brown */
-    --secondary-foreground: hsl(40 30% 90%); /* Match warm off-white */
-    --muted: hsl(30 10% 20%); /* Match secondary */
-    --muted-foreground: hsl(40 20% 70%); /* Lighter warm muted text */
-    --accent: hsl(28 30% 25%); /* Keep existing warm accent */
-    --accent-foreground: hsl(40 30% 90%); /* Match warm off-white */
-    --destructive: hsl(0 62.8% 30.6%); /* Keep destructive */
-    --destructive-foreground: hsl(40 30% 90%); /* Match warm off-white */
-    --border: hsl(30 10% 25%); /* More visible dark border */
-    --input: hsl(30 10% 25%); /* Match more visible border */
-    --ring: hsl(28 55% 60%); /* Match adjusted warm primary */
-    --header-bg: hsl(30 15% 18%); /* Slightly lighter than new warm card */
+    /* Dark Mode - Deep Navy with Cyan Accents */
+    --background-start: hsl(220, 25%, 10%);
+    --background-end: hsl(225, 30%, 7%);
+    --background: hsl(220, 25%, 10%);
+    --foreground: hsl(210, 15%, 94%);
+    --card: hsl(220, 20%, 13%);
+    --card-foreground: hsl(210, 15%, 94%);
+    --popover: hsl(220, 20%, 13%);
+    --popover-foreground: hsl(210, 15%, 94%);
+    --primary: hsl(210, 80%, 60%);
+    --primary-foreground: hsl(220, 25%, 10%);
+    --secondary: hsl(220, 20%, 18%);
+    --secondary-foreground: hsl(210, 70%, 80%);
+    --muted: hsl(220, 15%, 16%);
+    --muted-foreground: hsl(210, 10%, 70%);
+    --accent: hsl(190, 80%, 50%);
+    --accent-foreground: hsl(210, 15%, 95%);
+    --destructive: hsl(0, 60%, 60%);
+    --destructive-foreground: hsl(210, 15%, 94%);
+    --border: hsl(220, 15%, 20%);
+    --input: hsl(220, 15%, 22%);
+    --ring: hsl(210, 80%, 60%);
+    --header-bg: hsla(220, 20%, 13%, 0.9);
+
+    /* Text Gradient Colors */
+    --text-gradient-start: hsl(210, 85%, 70%);
+    --text-gradient-middle: hsl(205, 80%, 65%);
+    --text-gradient-end: hsl(200, 70%, 60%);
 
     /* Semantic Aliases */
     --footer-bg: var(--card);
@@ -68,7 +101,30 @@
     --text-color: var(--foreground);
     --site-title-color: var(--primary);
     --link: var(--primary);
-    --link-hover: hsl(28 55% 50%); /* Slightly darker warm primary for hover */
+    --link-hover: hsl(210, 85%, 70%);
+  }
+  
+  body {
+    background: linear-gradient(to bottom, var(--background-start), var(--background-end));
+    background-attachment: fixed; 
+  }
+
+  /* Apply gradient to H1/H2 text in dark mode */
+  h1, h2 {
+    background: linear-gradient(to right, var(--text-gradient-start), var(--text-gradient-middle), var(--text-gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-card {
+    background: var(--card);
+  }
+  .bg-header-bg\/80, .bg-header-bg {
+    background: var(--header-bg);
+  }
+  .bg-footer-bg {
+     background: var(--footer-bg);
   }
 }
 

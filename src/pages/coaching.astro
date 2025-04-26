@@ -1,9 +1,160 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const pageTitle = "Coaching";
+import YouTubeVideo from '../components/YouTubeVideo.astro';
+// import TestimonialCard from '../components/TestimonialCard.astro'; // Example
+// import PricingCard from '../components/PricingCard.astro'; // Example
 ---
 
-<Layout>
-  <h1 class="text-4xl font-serif font-bold text-foreground mb-4">{pageTitle}</h1>
-  <p class="text-lg text-foreground">Details about coaching services coming soon.</p>
+<Layout title="Language Learning Roadmap | Christo Languages" description="Stop wasting time. Get a proven language learning system from a 10-language polyglot. Achieve fluency faster.">
+
+  <!-- Hero Section -->
+  <section class="text-center py-12 px-6 bg-gradient-to-b from-background to-background-alt relative overflow-hidden">
+    <div class="max-w-3xl mx-auto relative z-10">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 leading-tight">
+        Stop Wasting Time Learning Languages.
+      </h1>
+      <p class="text-xl font-medium text-primary mb-6">
+        Get the Proven Roadmap from a 10-Language Polyglot.
+      </p>
+      <p class="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">
+        Finally get structure, curated resources, and efficient strategies that <em>work</em>.
+      </p>
+      <a href="#consultation"
+         class="inline-block px-6 py-3 rounded-md font-medium cursor-pointer transition-all duration-300 ease-in-out
+                bg-primary text-primary-foreground border border-primary
+                hover:bg-link-hover hover:border-link-hover hover:-translate-y-0.5">
+        Get Your Roadmap Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="py-12 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-serif font-bold text-foreground text-center mb-8">See How I Can Help You Succeed</h2>
+      <YouTubeVideo 
+        videoId="dQw4w9WgXcQ" 
+        title="How to Learn Languages Effectively"
+        className="shadow-lg" 
+      />
+    </div>
+  </section>
+
+  <!-- Problem / Solution Section -->
+  <section id="the-problem" class="max-w-5xl mx-auto py-12 px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-serif font-bold text-foreground mb-4">Feeling Lost? Overwhelmed? Stuck?</h2>
+      <p class="text-lg text-foreground/80 max-w-2xl mx-auto">
+        You're trying hard, but endless apps, conflicting advice, and lack of clear direction are holding you back. Sound familiar?
+      </p>
+    </div>
+
+    <h3 class="text-xl font-serif font-bold text-foreground text-center mb-8">The Solution: Polyglot-Guided Structure</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+      <div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col hover:shadow-md transition-shadow duration-300">
+        <h4 class="text-xl font-serif font-semibold text-foreground mb-3 flex items-center">
+          <span class="text-primary mr-2">✓</span> Custom Roadmap
+        </h4>
+        <p class="text-foreground/80">A clear, personalized plan based on your goals & learning style.</p>
+      </div>
+      <div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col hover:shadow-md transition-shadow duration-300">
+        <h4 class="text-xl font-serif font-semibold text-foreground mb-3 flex items-center">
+          <span class="text-primary mr-2">✓</span> Curated Resources
+        </h4>
+        <p class="text-foreground/80">Stop searching. Get the <em>best</em> tools & materials, chosen for you.</p>
+      </div>
+      <div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col hover:shadow-md transition-shadow duration-300">
+        <h4 class="text-xl font-serif font-semibold text-foreground mb-3 flex items-center">
+          <span class="text-primary mr-2">✓</span> Efficient Strategy
+        </h4>
+        <p class="text-foreground/80">Learn <em>how</em> to learn effectively with proven polyglot techniques.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Value Prop Section -->
+  <section id="why-me" class="py-12 my-10 px-6 bg-muted/30 border-y border-border">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-serif font-bold text-foreground mb-4">Why Trust My Guidance?</h2>
+      <p class="text-xl font-bold text-primary mb-6">I've Successfully Learned 10 Languages.</p>
+      <p class="text-lg text-foreground/80 mb-6 max-w-2xl mx-auto">
+        Forget generic advice. Get actionable strategies refined through real-world mastery. I'll help you avoid common pitfalls, save countless hours, and build a system for consistent progress.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-card text-card-foreground border border-border p-6 rounded-lg hover:shadow-md transition-shadow duration-300">
+          <p class="font-medium text-foreground flex items-center">
+            <span class="text-primary mr-2">✓</span> Save Time & Energy
+          </p>
+        </div>
+        <div class="bg-card text-card-foreground border border-border p-6 rounded-lg hover:shadow-md transition-shadow duration-300">
+          <p class="font-medium text-foreground flex items-center">
+            <span class="text-primary mr-2">✓</span> Avoid Costly Mistakes
+          </p>
+        </div>
+        <div class="bg-card text-card-foreground border border-border p-6 rounded-lg hover:shadow-md transition-shadow duration-300">
+          <p class="font-medium text-foreground flex items-center">
+            <span class="text-primary mr-2">✓</span> Follow a Proven Path
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="max-w-5xl mx-auto py-12 px-6">
+    <h2 class="text-3xl font-serif font-bold text-foreground text-center mb-8">Invest in Efficient Learning</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <!-- Roadmap Session -->
+      <div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col hover:shadow-md transition-shadow duration-300">
+        <h3 class="text-xl font-serif font-semibold text-foreground mb-3">Roadmap Session</h3>
+        <p class="text-foreground/80 mb-4 flex-grow">One-off strategy & planning.</p>
+        <p class="text-xl font-bold text-primary my-3">$XX</p>
+        <p class="text-foreground/80 text-sm mb-4">(90 min)</p>
+        <a href="#consultation" class="mt-auto inline-block px-6 py-3 rounded-md font-medium cursor-pointer transition-all duration-300 ease-in-out bg-transparent text-primary border border-primary hover:bg-primary/10 hover:-translate-y-0.5">
+          Start with Consultation
+        </a>
+      </div>
+      <!-- Monthly Guidance (Popular) -->
+      <div class="bg-card text-card-foreground border-2 border-primary p-6 rounded-lg flex flex-col relative hover:shadow-md transition-shadow duration-300">
+        <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-full">Popular</span>
+        <h3 class="text-xl font-serif font-semibold text-foreground mb-3 mt-2">Monthly Guidance</h3>
+        <p class="text-foreground/80 mb-4 flex-grow">Roadmap + ongoing support.</p>
+        <p class="text-xl font-bold text-primary my-3">$YYY</p>
+        <p class="text-foreground/80 text-sm mb-4">(Per Month)</p>
+        <a href="#consultation" class="mt-auto inline-block px-6 py-3 rounded-md font-medium cursor-pointer transition-all duration-300 ease-in-out bg-primary text-primary-foreground border border-primary hover:bg-link-hover hover:border-link-hover hover:-translate-y-0.5">
+          Start with Consultation
+        </a>
+      </div>
+      <!-- Intensive Partnership -->
+      <div class="bg-card text-card-foreground border border-border p-6 rounded-lg flex flex-col hover:shadow-md transition-shadow duration-300">
+        <h3 class="text-xl font-serif font-semibold text-foreground mb-3">Intensive Partnership</h3>
+        <p class="text-foreground/80 mb-4 flex-grow">Maximum acceleration & support.</p>
+        <p class="text-xl font-bold text-primary my-3">$ZZZ</p>
+        <p class="text-foreground/80 text-sm mb-4">(Per Month)</p>
+        <a href="#consultation" class="mt-auto inline-block px-6 py-3 rounded-md font-medium cursor-pointer transition-all duration-300 ease-in-out bg-transparent text-primary border border-primary hover:bg-primary/10 hover:-translate-y-0.5">
+          Start with Consultation
+        </a>
+      </div>
+    </div>
+    <p class="text-foreground/80 text-sm text-center">All guidance starts with a free consultation to ensure we're a fit.</p>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section id="consultation" class="py-12 my-10 px-6 text-center bg-muted/30 border-t border-border">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-3xl font-serif font-bold text-foreground mb-4">Ready to Learn Languages Effectively?</h2>
+      <p class="text-lg text-foreground/80 mb-6">
+        Stop guessing. Start progressing. Book your free 15-min strategy consultation now.
+      </p>
+      <!-- Link this to your booking page/tool -->
+      <a href="#"
+         class="inline-block px-6 py-3 rounded-md font-medium cursor-pointer transition-all duration-300 ease-in-out
+                bg-primary text-primary-foreground border border-primary
+                hover:bg-link-hover hover:border-link-hover hover:-translate-y-0.5">
+        Book Your Free Strategy Call
+      </a>
+      <p class="mt-6 text-foreground/70 text-xs">Limited spots available.</p>
+    </div>
+  </section>
+
 </Layout> 

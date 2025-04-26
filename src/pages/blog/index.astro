@@ -8,14 +8,17 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<Layout title="ChristoLanguage Blog">
+<Layout title="ChristoLanguages Blog">
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-foreground mb-10 text-center">Blog</h1>
     <div class="max-w-4xl mx-auto">
         <ul class="space-y-8">
-            {posts.map((post: CollectionEntry<'blog'>) => (
-                <li class="bg-card text-card-foreground border border-border p-6 rounded-lg transition-shadow hover:shadow-md">
+            {posts.map((post: CollectionEntry<'blog'>, index) => (
+                <li class="scroll-fade-in bg-card text-card-foreground border border-border p-6 rounded-lg transition-shadow hover:shadow-md" style={`--delay: ${index * 100}ms;`}>
                     <a href={`/blog/${post.slug}/`} class="block">
-                        <h2 class="text-2xl md:text-3xl font-serif font-semibold text-foreground mb-3">{post.data.title}</h2>
+                        <h2 
+                            class="text-2xl md:text-3xl font-serif font-semibold text-foreground mb-3"
+                            transition:name={`post-title-${post.slug}`}
+                        >{post.data.title}</h2>
                         <p class="text-foreground/90 mb-4">{post.data.description}</p>
                         <p class="text-sm text-foreground/80 mb-4">
                             Published on: {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -32,4 +35,58 @@ const posts = (await getCollection('blog')).sort(
             ))}
         </ul>
     </div>
-</Layout> 
+</Layout>
+
+<style>
+    .scroll-fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out;
+        transition-delay: var(--delay, 0ms);
+    }
+    .scroll-fade-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .scroll-fade-in:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .scroll-fade-in.is-visible:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('astro:page-load', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: unobserve after animation 
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const elements = document.querySelectorAll('.scroll-fade-in');
+        elements.forEach(el => observer.observe(el));
+    });
+
+    // Also run on initial load for elements already in view
+    document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        const elements = document.querySelectorAll('.scroll-fade-in');
+        elements.forEach(el => observer.observe(el));
+    }, { once: true }); // Run only once on initial load
+</script> 

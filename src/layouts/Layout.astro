@@ -1,7 +1,8 @@
 ---
 // You can import components or define variables here if needed
-const siteTitle = "ChristoLanguage";
+const siteTitle = "ChristoLanguages";
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 // Removed NewsletterSignup import
 ---
 <!doctype html>
@@ -17,12 +18,15 @@ import '../styles/global.css';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
+		<ClientRouter />
 		<title>{siteTitle}</title>
 	</head>
-	<body class="text-foreground font-sans flex flex-col min-h-screen transition-colors duration-200 ease-in-out bg-gradient-to-b from-card to-background">
+	<body 
+        class="text-foreground font-sans flex flex-col min-h-screen transition-colors duration-200 ease-in-out"
+    >
 		<!-- Removed Overlay -->
 
-		<header class="sticky top-0 z-50 bg-header-bg backdrop-blur-md border-b border-border transition-colors duration-200 ease-in-out">
+		<header class="sticky top-0 z-50 bg-header-bg/80 backdrop-blur-md border-b border-border/50 transition-colors duration-200 ease-in-out"> {/* Slightly more transparent header */} 
 			<div class="container mx-auto flex items-center justify-between p-4 relative">
 				<a href="/" class="font-serif text-2xl font-bold text-site-title tracking-wide">{siteTitle}</a>
 
@@ -48,7 +52,6 @@ import '../styles/global.css';
                            opacity-0 scale-95 md:opacity-100 md:scale-100 md:transform-none"
                 >
 					<ul class="flex flex-col py-2 md:py-0 md:flex-row list-none m-0 md:gap-6">
-						{/* Kept Updated Nav Item Styling */}
 						<li><a href="/" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Home</a></li>
 						<li><a href="/blog" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Blog</a></li>
 						<li><a href="/shop" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Shop</a></li>
@@ -61,17 +64,32 @@ import '../styles/global.css';
 		<main class="flex-grow container mx-auto p-4 md:p-8">
 			<slot />
 		</main>
-		<footer class="bg-card text-secondary-foreground text-sm text-center p-4 border-t border-border mt-auto">
-      {/* Removed the NewsletterSignup component and wrapper div */}
-      <div class="border-t border-border pt-4 mt-8">
-        <p>&copy; {new Date().getFullYear()} {siteTitle}</p>
-      </div>
+		<footer class="bg-card text-secondary-foreground text-sm border-t border-border mt-auto py-6 px-4">
+          <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-center md:text-left">&copy; {new Date().getFullYear()} {siteTitle}. All rights reserved.</p>
+            <nav>
+              <ul class="flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2">
+                <li><a href="/blog" class="hover:text-foreground transition-colors">Blog</a></li>
+                <li><a href="/shop" class="hover:text-foreground transition-colors">Shop</a></li>
+                <li><a href="/app" class="hover:text-foreground transition-colors">App</a></li>
+                <li><a href="/coaching" class="hover:text-foreground transition-colors">Coaching</a></li>
+                {/* Add other links like Privacy Policy, Terms, etc. if needed */}
+              </ul>
+            </nav>
+          </div>
 		</footer>
 	</body>
 </html>
 
+<style>
+    html {
+      overflow-y: scroll;
+    }
+</style>
+
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
+  // --- Mobile Menu Script ---
+  function setupMobileMenu() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const hamburgerLines = navToggle ? {
@@ -88,29 +106,21 @@ import '../styles/global.css';
 
         if (expanded) {
             navMenu.classList.remove('hidden');
-            // Force reflow before adding classes for transition
             void navMenu.offsetWidth; 
             navMenu.classList.add('flex', 'opacity-100', 'scale-100');
             navMenu.classList.remove('opacity-0', 'scale-95');
-
-            // Animate hamburger to 'X' - Adjusted translateY values to 8px
             hamburgerLines.top.style.transform = 'translateY(8px) rotate(45deg)';
             hamburgerLines.middle.style.opacity = '0';
             hamburgerLines.bottom.style.transform = 'translateY(-8px) rotate(-45deg)';
         } else {
             navMenu.classList.add('opacity-0', 'scale-95');
             navMenu.classList.remove('opacity-100', 'scale-100');
-            
-            // Wait for transition before hiding
             setTimeout(() => {
-                // Only hide if it wasn't opened again quickly
                 if (navToggle.getAttribute('aria-expanded') === 'false') { 
                     navMenu.classList.add('hidden');
                     navMenu.classList.remove('flex');
                 }
-            }, 200); // Match transition duration
-
-            // Reset hamburger icon
+            }, 200);
             hamburgerLines.top.style.transform = '';
             hamburgerLines.middle.style.opacity = '1';
             hamburgerLines.bottom.style.transform = '';
@@ -118,27 +128,51 @@ import '../styles/global.css';
     }
 
     if (navToggle && navMenu && hamburgerLines) {
-      navToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); 
-        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-        toggleMenu(!isExpanded);
-      });
+        const clickHandler = (e) => {
+            e.stopPropagation(); 
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            toggleMenu(!isExpanded);
+        };
+        const outsideClickHandler = (e) => {
+            const isMenuOpen = navToggle.getAttribute('aria-expanded') === 'true';
+            const isClickOutside = !navToggle.contains(e.target) && !navMenu.contains(e.target);
+            if (isMenuOpen && isClickOutside) {
+                toggleMenu(false);
+            }
+        };
+        const escapeHandler = (e) => {
+            if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+                toggleMenu(false);
+            }
+        };
 
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        const isMenuOpen = navToggle.getAttribute('aria-expanded') === 'true';
-        const isClickOutside = !navToggle.contains(e.target) && !navMenu.contains(e.target);
-        if (isMenuOpen && isClickOutside) {
-          toggleMenu(false);
-        }
-      });
-
-      // Close menu on escape key press
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
-          toggleMenu(false);
-        }
-      });
+        // Clean up previous listeners before adding new ones
+        navToggle.removeEventListener('click', clickHandler);
+        document.removeEventListener('click', outsideClickHandler);
+        document.removeEventListener('keydown', escapeHandler);
+        
+        navToggle.addEventListener('click', clickHandler);
+        document.addEventListener('click', outsideClickHandler);
+        document.addEventListener('keydown', escapeHandler);
     }
-  });
+  }
+
+  // REMOVED Interactive Gradient Script 
+
+  // --- Setup Function called on Astro events ---
+  function initializePageScripts() {
+      setupMobileMenu();
+      // REMOVED setupInteractiveGradient();
+  }
+
+  // Run scripts on initial load
+  if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializePageScripts, { once: true });
+  } else {
+      initializePageScripts(); // Already loaded
+  }
+  
+  // Re-run scripts after view transitions
+  document.addEventListener('astro:page-load', initializePageScripts);
+
 </script>
