@@ -111,7 +111,7 @@ body {
   }
 
   /* Apply gradient to H1/H2 text in dark mode */
-  h1, h2 {
+  h2 {
     background: linear-gradient(to right, var(--text-gradient-start), var(--text-gradient-middle), var(--text-gradient-end));
     -webkit-background-clip: text;
     background-clip: text;
