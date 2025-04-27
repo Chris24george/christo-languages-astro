@@ -42,9 +42,11 @@ const { Content } = await post.render();
         {post.data.tags && (
             <div class="mt-10 pt-6 border-t border-border">
                 <span class="font-semibold text-foreground mr-2">Tags:</span>
-                {post.data.tags.map((tag: string) => (
-                    <span class="inline-block bg-muted text-muted-foreground text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">{tag}</span>
-                ))}
+                <div class="flex flex-wrap gap-2 mt-2">
+                    {post.data.tags.map((tag: string) => (
+                        <span class="bg-primary/10 text-primary border border-primary/20 text-xs font-medium px-3 py-1 rounded-full">{tag}</span>
+                    ))}
+                </div>
             </div>
         )}
     </article>

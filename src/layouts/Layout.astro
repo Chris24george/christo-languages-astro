@@ -26,37 +26,46 @@ import { ClientRouter } from 'astro:transitions';
     >
 		<!-- Removed Overlay -->
 
-		<header class="sticky top-0 z-50 bg-header-bg/80 backdrop-blur-md border-b border-border/50 transition-colors duration-200 ease-in-out"> {/* Slightly more transparent header */} 
-			<div class="container mx-auto flex items-center justify-between p-4 relative">
-				<a href="/" class="font-serif text-2xl font-bold text-site-title tracking-wide">{siteTitle}</a>
+		<header class="sticky top-0 z-50 w-full border-b border-border/40 bg-card shadow-[0_1px_2px_0_rgba(0,0,0,0.03)]">
+			<div class="container mx-auto flex h-16 items-center justify-between px-4">
+				<a href="/" class="font-serif text-2xl font-bold text-foreground tracking-wide flex items-center gap-2">{siteTitle}</a>
 
 				{/* Mobile Nav Toggle */}
-				<button id="nav-toggle" class="md:hidden p-2 -mr-2 focus:outline-none focus:ring-2 focus:ring-primary rounded" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+				<button id="nav-toggle" class="md:hidden inline-flex items-center justify-center rounded-md h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
 					{/* Hamburger Icon Container */}
-					<div class="w-6 h-6 flex flex-col justify-around items-center relative">
-                        {/* Simplified hamburger lines */}
-						<span class="hamburger-line top block w-full h-0.5 bg-primary rounded transition-transform duration-300 ease-in-out"></span>
-						<span class="hamburger-line middle block w-full h-0.5 bg-primary rounded transition-opacity duration-300 ease-in-out"></span>
-						<span class="hamburger-line bottom block w-full h-0.5 bg-primary rounded transition-transform duration-300 ease-in-out"></span>
+					<div class="w-5 h-5 flex flex-col justify-around items-center relative">
+						<span class="hamburger-line top block w-full h-[2px] bg-current rounded transition-transform duration-300 ease-in-out"></span>
+						<span class="hamburger-line middle block w-full h-[2px] bg-current rounded transition-opacity duration-300 ease-in-out"></span>
+						<span class="hamburger-line bottom block w-full h-[2px] bg-current rounded transition-transform duration-300 ease-in-out"></span>
 					</div>
 					<span class="sr-only">Menu</span>
 				</button>
 
-				{/* Desktop Nav / Mobile Dropdown Menu - Added transform classes */} 
+				{/* Desktop Nav / Mobile Dropdown Menu */} 
 				<nav 
                     id="nav-menu" 
-                    class="absolute top-full right-0 mt-1 md:mt-0 w-48 md:w-auto 
-                           bg-card md:bg-transparent shadow-lg md:shadow-none rounded-md md:rounded-none 
-                           hidden md:relative md:flex flex-col md:flex-row z-40 
-                           transform origin-top-right transition-all duration-200 ease-in-out 
+                    class="absolute top-full left-0 right-0 md:right-auto md:top-auto md:relative
+                           p-4 md:p-0 border-b md:border-none border-border bg-card md:bg-transparent shadow-md md:shadow-none
+                           hidden md:block z-40 
+                           transform origin-top transition-all duration-200 ease-in-out 
                            opacity-0 scale-95 md:opacity-100 md:scale-100 md:transform-none"
                 >
-					<ul class="flex flex-col py-2 md:py-0 md:flex-row list-none m-0 md:gap-6">
-						<li><a href="/" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Home</a></li>
-						<li><a href="/blog" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Blog</a></li>
-						<li><a href="/shop" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Shop</a></li>
-						<li><a href="/app" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">App</a></li>
-						<li><a href="/coaching" class="block font-medium text-foreground/80 hover:text-foreground hover:bg-muted focus:bg-muted focus:text-foreground focus:outline-none rounded-md px-3 py-2 transition-colors duration-200 w-full text-left">Coaching</a></li>
+					<ul class="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-2">
+						<li class="w-full md:w-auto">
+							<a href="/" class="text-sm font-medium block px-4 py-2 rounded-md hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary transition-colors w-full md:w-auto text-center" data-astro-prefetch>Home</a>
+						</li>
+						<li class="w-full md:w-auto">
+							<a href="/blog" class="text-sm font-medium block px-4 py-2 rounded-md hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary transition-colors w-full md:w-auto text-center" data-astro-prefetch>Blog</a>
+						</li>
+						<li class="w-full md:w-auto">
+							<a href="/shop" class="text-sm font-medium block px-4 py-2 rounded-md hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary transition-colors w-full md:w-auto text-center" data-astro-prefetch>Shop</a>
+						</li>
+						<li class="w-full md:w-auto">
+							<a href="/app" class="text-sm font-medium block px-4 py-2 rounded-md hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary transition-colors w-full md:w-auto text-center" data-astro-prefetch>App</a>
+						</li>
+						<li class="w-full md:w-auto">
+							<a href="/coaching" class="text-sm font-medium block px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 focus:bg-primary/90 transition-colors w-full md:w-auto text-center" data-astro-prefetch>Coaching</a>
+						</li>
 					</ul>
 				</nav>
 			</div>
@@ -98,6 +107,27 @@ import { ClientRouter } from 'astro:transitions';
         bottom: navToggle.querySelector('.hamburger-line.bottom'),
     } : null;
 
+    // Add active link highlighting
+    function highlightActiveLink() {
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll("#nav-menu a");
+      
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        // Remove existing active classes first
+        link.classList.remove('bg-primary/10', 'text-primary');
+        
+        // Skip the coaching link as it has its own styling
+        if (link.href.includes('/coaching')) return;
+        
+        // Check if this link matches the current path
+        if (currentPath === linkPath || 
+            (linkPath !== '/' && currentPath.startsWith(linkPath))) {
+          link.classList.add('bg-primary/10', 'text-primary');
+        }
+      });
+    }
+
     function toggleMenu(show) {
         if (!navMenu || !navToggle || !hamburgerLines) return;
         
@@ -107,18 +137,18 @@ import { ClientRouter } from 'astro:transitions';
         if (expanded) {
             navMenu.classList.remove('hidden');
             void navMenu.offsetWidth; 
-            navMenu.classList.add('flex', 'opacity-100', 'scale-100');
+            navMenu.classList.add('block', 'opacity-100', 'scale-100');
             navMenu.classList.remove('opacity-0', 'scale-95');
-            hamburgerLines.top.style.transform = 'translateY(8px) rotate(45deg)';
+            hamburgerLines.top.style.transform = 'translateY(7px) rotate(45deg)';
             hamburgerLines.middle.style.opacity = '0';
-            hamburgerLines.bottom.style.transform = 'translateY(-8px) rotate(-45deg)';
+            hamburgerLines.bottom.style.transform = 'translateY(-7px) rotate(-45deg)';
         } else {
             navMenu.classList.add('opacity-0', 'scale-95');
             navMenu.classList.remove('opacity-100', 'scale-100');
             setTimeout(() => {
                 if (navToggle.getAttribute('aria-expanded') === 'false') { 
                     navMenu.classList.add('hidden');
-                    navMenu.classList.remove('flex');
+                    navMenu.classList.remove('block');
                 }
             }, 200);
             hamburgerLines.top.style.transform = '';
@@ -155,14 +185,14 @@ import { ClientRouter } from 'astro:transitions';
         document.addEventListener('click', outsideClickHandler);
         document.addEventListener('keydown', escapeHandler);
     }
+    
+    // Call the highlight function
+    highlightActiveLink();
   }
-
-  // REMOVED Interactive Gradient Script 
 
   // --- Setup Function called on Astro events ---
   function initializePageScripts() {
       setupMobileMenu();
-      // REMOVED setupInteractiveGradient();
   }
 
   // Run scripts on initial load
