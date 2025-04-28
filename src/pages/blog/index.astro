@@ -16,8 +16,7 @@ const posts = (await getCollection('blog')).sort(
                 <li class="scroll-fade-in bg-card text-card-foreground border border-border p-6 rounded-lg transition-shadow hover:shadow-md" style={`--delay: ${index * 100}ms;`}>
                     <a href={`/blog/${post.slug}/`} class="block">
                         <h2 
-                            class="text-2xl md:text-3xl font-serif font-semibold text-foreground mb-3"
-                            transition:name={`post-title-${post.slug}`}
+                            class="text-xl md:text-2xl font-serif font-bold text-primary group-hover:text-secondary transition-colors duration-200 mb-1 text-balance"
                         >{post.data.title}</h2>
                         <p class="text-foreground/90 mb-4">{post.data.description}</p>
                         <p class="text-sm text-foreground/80 mb-4">

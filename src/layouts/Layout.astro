@@ -2,7 +2,6 @@
 // You can import components or define variables here if needed
 const siteTitle = "ChristoLanguages";
 import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
 // Removed NewsletterSignup import
 ---
 <!doctype html>
@@ -18,7 +17,6 @@ import { ClientRouter } from 'astro:transitions';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-		<ClientRouter />
 		<title>{siteTitle}</title>
 	</head>
 	<body 
@@ -201,8 +199,5 @@ import { ClientRouter } from 'astro:transitions';
   } else {
       initializePageScripts(); // Already loaded
   }
-  
-  // Re-run scripts after view transitions
-  document.addEventListener('astro:page-load', initializePageScripts);
 
 </script>
