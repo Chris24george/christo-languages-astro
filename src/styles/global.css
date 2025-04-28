@@ -49,10 +49,6 @@ body {
 }
 
 /* Apply gradients to elements in light mode */
-:root {
-  --card: var(--card-gradient);
-  --header-bg: var(--header-gradient);
-}
 /* We need to apply these gradients via Tailwind's theme extension or global styles */
 .bg-card {
   background: var(--card-gradient);
@@ -64,8 +60,8 @@ body {
   background: var(--footer-bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+/* Define dark mode variables and styles under the .dark class */
+.dark {
     /* Dark Mode - Obsidian Moss */
     --background-start: #0e131a;
     --background-end: #080f12;
@@ -88,7 +84,9 @@ body {
     --border: #233040;
     --input: #1c242e;
     --ring: #56b950;
-    --header-bg: rgba(20, 28, 35, 0.9);
+    --header-bg: rgba(20, 28, 35, 0.9); /* Specific dark header bg */
+    --card-gradient: initial; /* Reset light gradient if needed */
+    --header-gradient: initial; /* Reset light gradient if needed */
 
     /* Text Gradient Colors */
     --text-gradient-start: hsl(110, 40%, 60%);
@@ -103,30 +101,31 @@ body {
     --site-title-color: var(--primary);
     --link: var(--primary);
     --link-hover: hsl(110, 35%, 55%);
-  }
+}
   
-  body {
-    background: linear-gradient(to bottom, var(--background-start), var(--background-end));
-    background-attachment: fixed; 
-  }
+/* Apply dark mode base styles using the .dark class */
+.dark body {
+  background: linear-gradient(to bottom, var(--background-start), var(--background-end));
+  background-attachment: fixed; 
+}
 
-  /* Apply gradient to H1/H2 text in dark mode */
-  h2 {
-    background: linear-gradient(to right, var(--text-gradient-start), var(--text-gradient-middle), var(--text-gradient-end));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+/* Apply gradient to H2 text in dark mode */
+.dark h2 {
+  background: linear-gradient(to right, var(--text-gradient-start), var(--text-gradient-middle), var(--text-gradient-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-  .bg-card {
-    background: var(--card);
-  }
-  .bg-header-bg\/80, .bg-header-bg {
-    background: var(--header-bg);
-  }
-  .bg-footer-bg {
-     background: var(--footer-bg);
-  }
+/* Apply dark mode backgrounds using the .dark class */
+.dark .bg-card {
+  background: var(--card); /* Use dark card color, not gradient */
+}
+.dark .bg-header-bg\/80, .dark .bg-header-bg {
+  background: var(--header-bg); /* Use dark header color */
+}
+.dark .bg-footer-bg {
+   background: var(--footer-bg); /* Use dark footer color */
 }
 
 /* Reset & Base Styles */
