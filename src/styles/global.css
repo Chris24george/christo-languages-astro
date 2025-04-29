@@ -109,13 +109,15 @@ body {
   background-attachment: fixed; 
 }
 
-/* Apply gradient to H2 text in dark mode */
+/* Apply gradient to H2 text in dark mode - REMOVED */
+/*
 .dark h2 {
   background: linear-gradient(to right, var(--text-gradient-start), var(--text-gradient-middle), var(--text-gradient-end));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
+*/
 
 /* Apply dark mode backgrounds using the .dark class */
 .dark .bg-card {
