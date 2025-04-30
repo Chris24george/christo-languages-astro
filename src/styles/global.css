@@ -6,32 +6,32 @@
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-serif: 'Playfair Display', serif;
 
-  /* Light Mode - Warm Cream */
-  --background-start: #f9f6f0;
-  --background-end: #f5f2ed;
-  --background: #f9f6f0;
-  --foreground: #0c2731;
-  --card: #ffffff;
-  --card-foreground: #0c2731;
-  --popover: #fcf9f2;
-  --popover-foreground: #0c2731;
-  --primary: #3d8e4e;
-  --primary-foreground: #ffffff;
-  --secondary: #e8e3d6;
-  --secondary-foreground: #25455a;
-  --muted: #f3f1eb;
-  --muted-foreground: #4e6977;
-  --accent: #b7894e;
-  --accent-foreground: #ffffff;
-  --destructive: #c0392b;
-  --destructive-foreground: #ffffff;
-  --border: #ddd3c4;
-  --input: #eae2d2;
-  --ring: #3d8e4e;
+  /* Light Mode – Purple Breeze */
+  --background-start: #FDFCFF;  /* barely-there lavender */
+  --background-end:   #F7F6FB;  /* light gray with hint of lavender */
+  --background:       #FDFCFF;
+  --foreground:       #2B2730;  /* charcoal for readability */
+  --card:             #FFFFFF;
+  --card-foreground:  #2B2730;
+  --popover:          #FFFFFF;
+  --popover-foreground:#2B2730;
+  --primary:          #7E5FF5;  /* soft purple */
+  --primary-foreground:#FFFFFF;
+  --secondary:        #A78BFA;  /* light violet */
+  --secondary-foreground:#FFFFFF;
+  --muted:            #F4F2FF;  /* pale lilac */
+  --muted-foreground: #6B7280;  /* standard gray */
+  --accent:           #A897FF;
+  --accent-foreground:#FFFFFF;
+  --destructive:      #EF4444;
+  --border:           #E3E1F3;
+  --input:            #F5F4FF;
+  --ring:             #7E5FF5;
 
-  /* Gradient Variables for Components */
-  --card-gradient: linear-gradient(160deg, #ffffff, #f9f6f0);
-  --header-gradient: linear-gradient(to bottom, rgba(249, 246, 240, 0.95), rgba(245, 242, 237, 0.92));
+  /* Surface Colors */
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --card-gradient: var(--card); /* flat color, no gradient */
+  --header-gradient: var(--header-bg); /* flat color, no gradient */
 
   /* Semantic Aliases */
   --footer-bg: var(--card-gradient);
@@ -40,7 +40,7 @@
   --text-color: var(--foreground);
   --site-title-color: var(--primary);
   --link: var(--primary);
-  --link-hover: hsl(135, 40%, 48%);
+  --link-hover: #5C47FF;
 }
 
 body {
@@ -62,45 +62,44 @@ body {
 
 /* Define dark mode variables and styles under the .dark class */
 .dark {
-    /* Dark Mode - Obsidian Moss */
-    --background-start: #0e131a;
-    --background-end: #080f12;
-    --background: #0e131a;
-    --foreground: #e8dfc8;
-    --card: #141c23;
-    --card-foreground: #e8dfc8;
-    --popover: #141c23;
-    --popover-foreground: #e8dfc8;
-    --primary: #56b950;
-    --primary-foreground: #0e131a;
-    --secondary: #1a232c;
-    --secondary-foreground: #9fe3a0;
-    --muted: #171e26;
-    --muted-foreground: #cbbf99;
-    --accent: #d0a866;
-    --accent-foreground: #0e131a;
-    --destructive: #c0392b;
-    --destructive-foreground: #ffffff;
-    --border: #233040;
-    --input: #1c242e;
-    --ring: #56b950;
-    --header-bg: rgba(20, 28, 35, 0.9); /* Specific dark header bg */
-    --card-gradient: initial; /* Reset light gradient if needed */
-    --header-gradient: initial; /* Reset light gradient if needed */
+    /* Dark Mode – Purple Haze */
+    --background-start: #1D1A27;  /* lighter dark purple */
+    --background-end:   #252033;  /* medium dark purple */
+    --background:       #1F1C29;  /* base dark purple */
+    --foreground:       #EEEBF5;  /* off-white with less purple tint */
+    --card:            #1F1A2B;
+    --card-foreground:  #EEEBF5;
+    --popover:         #1F1A2B;
+    --popover-foreground:#EEEBF5;
+    --primary:         #A68CFF;   /* brighter purple */
+    --primary-foreground:#15121C;
+    --secondary:       #A78BFA;
+    --secondary-foreground:#15121C;
+    --muted:           #272132;
+    --muted-foreground:#CBC7E0;
+    --accent:          #C4A9FF;   /* lighter purple with better contrast */
+    --accent-foreground:#15121C;
+    --destructive:     #F87171;
+    --border:          #332C45;
+    --input:           #272132;
+    --ring:            #8E74FF;
+    --header-bg: rgba(24,20,36,0.9);
+    --card-gradient: var(--card);
+    --header-gradient: var(--header-bg);
 
     /* Text Gradient Colors */
-    --text-gradient-start: hsl(110, 40%, 60%);
-    --text-gradient-middle: hsl(100, 35%, 55%);
-    --text-gradient-end: hsl(90, 30%, 50%);
+    --text-gradient-start: hsl(43, 40%, 65%);
+    --text-gradient-middle: hsl(38, 35%, 60%);
+    --text-gradient-end: hsl(33, 30%, 55%);
 
     /* Semantic Aliases */
-    --footer-bg: var(--card);
+    --footer-bg: var(--card-gradient);
     --header-border: var(--border);
     --footer-border: var(--border);
     --text-color: var(--foreground);
     --site-title-color: var(--primary);
     --link: var(--primary);
-    --link-hover: hsl(110, 35%, 55%);
+    --link-hover: #D4C7FF;   /* very light purple for better visibility */
 }
   
 /* Apply dark mode base styles using the .dark class */

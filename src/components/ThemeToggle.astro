@@ -1,10 +1,11 @@
 ---
 // src/components/ThemeToggle.astro
+// This component now only handles system preferences for theming - no toggle button
 ---
 <script is:inline>
   // This script runs inline in the <head> to set the theme class *before*
   // the page renders to prevent FOUC (flash of unstyled content).
-  // It now ONLY respects the system preference.
+  // It ONLY respects the system preference.
 
   const applyTheme = (theme) => {
     if (theme === 'dark') {
@@ -31,5 +32,5 @@
 </script>
 
 <!-- Button removed -->
-<!-- Second script removed -->
-<!-- Styles removed as the button no longer exists --> 
+<!-- Toggle script removed -->
+<!-- Styles removed --> 
