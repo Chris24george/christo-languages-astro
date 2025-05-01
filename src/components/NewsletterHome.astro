@@ -1,0 +1,232 @@
+<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+<div class="newsletter-container relative">
+    <form
+        action="https://app.kit.com/forms/7995731/subscriptions"
+        class="seva-form formkit-form max-w-lg mx-auto"
+        method="post"
+        data-sv-form="7995731"
+        data-uid="8bde3c5cc7"
+        data-format="inline"
+        data-version="5"
+        data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":""},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+    >
+        <div data-style="clean">
+            <ul
+                class="formkit-alert formkit-alert-error mt-3 mb-3 px-4 py-3 rounded-md text-sm"
+                data-element="errors"
+                data-group="alert"
+                style="background-color: hsl(var(--destructive) / 0.1); border-color: hsl(var(--destructive) / 0.3); color: hsl(var(--destructive-foreground));"
+                hidden
+            ></ul>
+            
+            <div
+                data-element="fields"
+                data-stacked="false"
+                class="seva-fields formkit-fields flex flex-col sm:flex-row gap-3 items-center justify-center"
+            >
+                <div class="formkit-field flex-grow w-full sm:w-auto relative">
+                    <input
+                        class="formkit-input w-full px-5 py-3.5 border border-border/60 rounded-lg bg-background text-foreground placeholder:text-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/80 transition-colors duration-200"
+                        name="email_address"
+                        aria-label="Email Address"
+                        placeholder="Enter your email..."
+                        required=""
+                        type="email"
+                    />
+                    <div class="absolute inset-y-0 left-2 flex items-center pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary/60 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                    </div>
+                </div>
+                <button
+                    data-element="submit"
+                    class="formkit-submit formkit-submit px-6 py-3.5 rounded-lg font-medium cursor-pointer transition-all duration-300 ease-in-out bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+                >
+                    <span class="flex items-center">
+                        <span class="formkit-spinner mr-2"><div></div><div></div><div></div></span>
+                        Subscribe 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            
+            <!-- ConvertKit will insert its own success message here based on data-options -->
+            
+            <div class="formkit-powered-by-convertkit-container mt-3 text-center">
+                <a
+                    href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"
+                    data-element="powered-by"
+                    class="formkit-powered-by-convertkit text-xs opacity-60"
+                    data-variant="dark"
+                    target="_blank"
+                    rel="nofollow">Built with Kit</a
+                >
+            </div>
+        </div>
+    </form>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="bg-card text-card-foreground rounded-xl shadow-xl max-w-md w-full mx-4 p-6 relative transform transition-all duration-300 ease-out scale-95 opacity-0">
+            <button id="close-modal-button" class="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors" aria-label="Close modal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="flex items-center mb-4">
+                <div class="bg-primary/10 text-primary rounded-full p-2 mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-foreground" id="modal-title">Check Your Email!</h3>
+            </div>
+            <p class="text-sm text-muted-foreground mb-5">
+                Thanks for subscribing! Please check your inbox now to confirm your subscription and start receiving updates.
+            </p>
+            <button id="close-modal-button-ok" class="w-full px-4 py-2.5 rounded-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200">
+                OK
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .formkit-form .formkit-spinner {
+        display: none; /* Hidden by default */
+    }
+    
+    .formkit-form.formkit-submitting .formkit-submit span svg {
+        display: none; /* Hide arrow during submit */
+    }
+    .formkit-form.formkit-submitting .formkit-spinner {
+        display: flex; /* Show spinner during submit */
+    }
+    
+    .formkit-spinner > div {
+        width: 5px;
+        height: 5px;
+        margin: 0 1px;
+        background-color: currentColor;
+        border-radius: 50%;
+        animation: formkit-bouncedelay 1s infinite ease-in-out both;
+    }
+    
+    .formkit-spinner > div:nth-child(1) {
+        animation-delay: -0.32s;
+    }
+    
+    .formkit-spinner > div:nth-child(2) {
+        animation-delay: -0.16s;
+    }
+    
+    @keyframes formkit-bouncedelay {
+        0%, 80%, 100% {
+            transform: scale(0);
+        }
+        40% {
+            transform: scale(1);
+        }
+    }
+    
+    input.formkit-input {
+        padding-left: 2.5rem;
+    }
+
+    /* Modal animation */
+    #confirmation-modal.flex {
+        display: flex;
+    }
+    #confirmation-modal.flex > div {
+        opacity: 1;
+        transform: scale(1);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector<HTMLFormElement>('.formkit-form');
+        const modal = document.getElementById('confirmation-modal');
+        const formWrapper = form ? form.parentNode : null; // Get parent safely
+        const closeModalButtons = document.querySelectorAll('#close-modal-button, #close-modal-button-ok');
+
+        // Ensure all essential elements exist before proceeding
+        if (!form || !modal || !formWrapper || !(formWrapper instanceof Node)) {
+            console.error('Newsletter form or modal elements not found.');
+            return;
+        }
+
+        const modalContent = modal.firstElementChild;
+        if (!modalContent) {
+             console.error('Modal content area not found.');
+             return;
+        }
+
+        // Function to open the modal
+        const openModal = () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex'); // Use flex for centering
+            // Trigger animation
+            requestAnimationFrame(() => {
+                // Check modalContent again inside async callback just in case
+                if (modalContent) {
+                    modalContent.classList.add('opacity-100', 'scale-100');
+                    modalContent.classList.remove('opacity-0', 'scale-95');
+                }
+            });
+        };
+
+        // Function to close the modal
+        const closeModal = () => {
+            if (modalContent) {
+                modalContent.classList.remove('opacity-100', 'scale-100');
+                modalContent.classList.add('opacity-0', 'scale-95');
+            }
+            setTimeout(() => {
+                 modal.classList.add('hidden');
+                 modal.classList.remove('flex');
+                 // Reset form submitting state
+                 form.classList.remove('formkit-submitting');
+            }, 300); // Match modal animation duration
+        };
+
+        // Close modal listeners
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', closeModal);
+        });
+        // Close modal when clicking backdrop
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Add submitting class on submit start
+        form.addEventListener('submit', () => {
+            form.classList.add('formkit-submitting');
+        });
+
+        // Observe ConvertKit's changes to show the modal on success
+        const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    // Check if ConvertKit added its success message
+                    const successMessage = formWrapper.querySelector('.formkit-alert-success');
+                    if (successMessage) {
+                        console.log('ConvertKit success message detected.');
+                        openModal();
+                        observer.disconnect(); // Stop observing once success is shown
+                        break; // Exit loop once handled
+                    }
+                }
+            }
+        });
+
+        // Start observing the form's parent for added nodes (like the success message)
+        observer.observe(formWrapper, { childList: true, subtree: true });
+    });
+</script>

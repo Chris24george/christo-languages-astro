@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -16,9 +17,9 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-    <article class="max-w-3xl mx-auto">
+    <article class="max-w-3xl mx-auto mb-16">
         <h1 
-            class="text-3xl md:text-4xl font-serif font-bold text-primary mb-2"
+            class="text-4xl md:text-5xl font-serif font-bold text-primary mb-2"
         >{post.data.title}</h1>
         <p class="text-sm text-foreground/80 mb-6">
             Published on: {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -49,4 +50,8 @@ const { Content } = await post.render();
             </div>
         )}
     </article>
+
+    <div class="max-w-2xl mx-auto mt-16 pt-12 border-t border-border">
+        <NewsletterForm />
+    </div>
 </Layout> 

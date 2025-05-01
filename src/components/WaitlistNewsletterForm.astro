@@ -1,0 +1,204 @@
+<!-- src/components/ConvertKitForm.astro -->
+<!-- ConvertKit Form Embed -->
+
+<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+
+<div class="convertkit-form-container relative">
+      <form action="https://app.kit.com/forms/7994667/subscriptions" class="seva-form formkit-form max-w-lg mx-auto" method="post" data-sv-form="7994667" data-uid="1d2f944ad0" data-format="inline" data-version="5" data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":""},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}' min-width="400 500 600 700 800">
+        <div data-style="clean">
+            <ul 
+                class="formkit-alert formkit-alert-error mt-3 mb-3 px-4 py-3 rounded-md text-sm" 
+                data-element="errors" 
+                data-group="alert"
+                style="background-color: hsl(var(--destructive) / 0.1); border-color: hsl(var(--destructive) / 0.3); color: hsl(var(--destructive-foreground));"
+                hidden>
+            </ul>
+            <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields flex flex-col sm:flex-row gap-3 items-center justify-center">
+                <div class="formkit-field flex-grow w-full sm:w-auto">
+                    <input 
+                        class="formkit-input w-full px-4 py-2.5 border border-border/60 rounded-md bg-background text-foreground placeholder:text-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/80 transition-colors duration-200" 
+                        name="email_address" 
+                        aria-label="Email Address" 
+                        placeholder="Enter your email..." 
+                        required="" 
+                        type="email" 
+                    />
+                </div>
+                <button 
+                    data-element="submit" 
+                    class="formkit-submit formkit-submit px-6 py-2.5 rounded-md font-medium cursor-pointer transition-all duration-300 ease-in-out bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+                >
+                    <span class="flex items-center">
+                        <span class="formkit-spinner mr-2"><div></div><div></div><div></div></span>
+                        Join Waitlist
+                    </span>
+                </button>
+            </div>
+            <div class="formkit-powered-by-convertkit-container mt-3">
+                <a href="https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit text-xs opacity-60" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a>
+            </div>
+        </div>
+    </form>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal-ck" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm" aria-labelledby="modal-title-ck" role="dialog" aria-modal="true">
+        <div class="bg-card text-card-foreground rounded-xl shadow-xl max-w-md w-full mx-4 p-6 relative transform transition-all duration-300 ease-out scale-95 opacity-0">
+            <button id="close-modal-button-ck" class="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors" aria-label="Close modal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="flex items-center mb-4">
+                <div class="bg-primary/10 text-primary rounded-full p-2 mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-foreground" id="modal-title-ck">Check Your Email!</h3>
+            </div>
+            <p class="text-sm text-muted-foreground mb-5">
+                Thanks for signing up! Please check your inbox now to confirm your subscription and join the waitlist.
+            </p>
+            <button id="close-modal-button-ok-ck" class="w-full px-4 py-2.5 rounded-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200">
+                OK
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Ensure unique styles for this component if needed, or rely on global styles */
+    .formkit-form .formkit-spinner {
+        display: none; /* Hidden by default */
+    }
+    
+    .formkit-form.formkit-submitting .formkit-submit span span:first-child { /* Target the spinner span */
+         display: flex; /* Show spinner during submit */
+    }
+     .formkit-form.formkit-submitting .formkit-submit span span:not(:first-child) { /* Hide text span */
+        /* Optionally hide text or keep it */
+    }
+    
+    .formkit-spinner > div {
+        width: 5px;
+        height: 5px;
+        margin: 0 1px;
+        background-color: currentColor;
+        border-radius: 50%;
+        animation: formkit-bouncedelay 1s infinite ease-in-out both;
+    }
+    
+    .formkit-spinner > div:nth-child(1) {
+        animation-delay: -0.32s;
+    }
+    
+    .formkit-spinner > div:nth-child(2) {
+        animation-delay: -0.16s;
+    }
+    
+    @keyframes formkit-bouncedelay {
+        0%, 80%, 100% {
+            transform: scale(0);
+        }
+        40% {
+            transform: scale(1);
+        }
+    }
+    
+    /* Modal animation */
+    #confirmation-modal-ck.flex {
+        display: flex;
+    }
+    #confirmation-modal-ck.flex > div {
+        opacity: 1;
+        transform: scale(1);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Select elements specific to this component instance
+        const componentRoot = document.querySelector('.convertkit-form-container'); 
+        if (!componentRoot) return;
+
+        const form = componentRoot.querySelector<HTMLFormElement>('.formkit-form');
+        const modal = componentRoot.querySelector<HTMLElement>('#confirmation-modal-ck');
+        const formWrapper = form ? form.parentNode : null; // Get parent safely
+        const closeModalButtons = componentRoot.querySelectorAll('#close-modal-button-ck, #close-modal-button-ok-ck');
+
+        // Ensure all essential elements exist before proceeding
+        if (!form || !modal || !formWrapper || !(formWrapper instanceof Node)) {
+            console.error('ConvertKit form or modal elements not found within this component.');
+            return;
+        }
+
+        const modalContent = modal.firstElementChild;
+        if (!modalContent) {
+             console.error('Modal content area not found.');
+             return;
+        }
+
+        // Function to open the modal
+        const openModal = () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex'); // Use flex for centering
+            // Trigger animation
+            requestAnimationFrame(() => {
+                if (modalContent) {
+                    modalContent.classList.add('opacity-100', 'scale-100');
+                    modalContent.classList.remove('opacity-0', 'scale-95');
+                }
+            });
+        };
+
+        // Function to close the modal
+        const closeModal = () => {
+            if (modalContent) {
+                modalContent.classList.remove('opacity-100', 'scale-100');
+                modalContent.classList.add('opacity-0', 'scale-95');
+            }
+            setTimeout(() => {
+                 modal.classList.add('hidden');
+                 modal.classList.remove('flex');
+                 // Reset form submitting state
+                 form.classList.remove('formkit-submitting');
+            }, 300); // Match modal animation duration
+        };
+
+        // Close modal listeners
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', closeModal);
+        });
+        // Close modal when clicking backdrop
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Add submitting class on submit start
+        form.addEventListener('submit', () => {
+            form.classList.add('formkit-submitting');
+        });
+
+        // Observe ConvertKit's changes to show the modal on success
+        const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    // Check if ConvertKit added its success message
+                    // Search within the form's wrapper, not the whole document
+                    const successMessage = formWrapper.querySelector('.formkit-alert-success');
+                    if (successMessage) {
+                        console.log('ConvertKit success message detected.');
+                        openModal();
+                        observer.disconnect(); // Stop observing once success is shown
+                        break; // Exit loop once handled
+                    }
+                }
+            }
+        });
+
+        // Start observing the form's parent for added nodes (like the success message)
+        observer.observe(formWrapper, { childList: true, subtree: true });
+    });
+</script>

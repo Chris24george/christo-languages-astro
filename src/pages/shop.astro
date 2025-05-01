@@ -1,135 +1,219 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WaitlistNewsletterForm from '../components/WaitlistNewsletterForm.astro';
 // Import necessary components if you have them, e.g., ProductCard
 ---
 
-<Layout title="Language Guides">
-	<div class="container mx-auto px-4 py-8 max-w-4xl">
-		<h1 class="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4 text-center">Language Guides</h1>
-		<p class="text-foreground/70 max-w-xl mx-auto text-center mb-10">Complete learning paths for your language journey.</p>
-
-		<!-- Product Grid -->
-		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-			<!-- German Guide -->
-			<div class="group bg-card border border-border/40 rounded-lg overflow-hidden hover:shadow-sm transition-all duration-300">
-				<div class="aspect-video w-full overflow-hidden bg-muted/20">
-					<img 
-						src="https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=300&q=80" 
-						alt="German language guide" 
-						class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-					/>
-				</div>
-				<div class="p-4">
-					<div class="flex items-center gap-2 mb-2">
-						<span class="text-xl">🇩🇪</span>
-						<h2 class="text-lg font-serif font-semibold text-foreground">German</h2>
+<Layout title="Language Fluency Kits | ChristoLanguages">
+	<div class="container mx-auto px-4 py-8 max-w-6xl">
+		<!-- Hero Section -->
+		<section class="mb-16">
+			<div class="rounded-2xl p-8 md:p-12">
+				<div class="max-w-3xl mx-auto text-center">
+					<h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">Hop on the Language Learning Train</h1>
+					<div class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+						<span class="mr-2">✨</span> Coming Soon
 					</div>
-					<p class="text-foreground/70 text-sm mb-3">Complete guide from basics to fluency</p>
-					<div class="flex items-center justify-between">
-						<p class="font-medium text-foreground">$29.99</p>
-						<button class="text-sm px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-							Purchase
-						</button>
-					</div>
-				</div>
-			</div>
-
-			<!-- French Guide -->
-			<div class="group bg-card border border-border/40 rounded-lg overflow-hidden hover:shadow-sm transition-all duration-300">
-				<div class="aspect-video w-full overflow-hidden bg-muted/20">
-					<img 
-						src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=300&q=80" 
-						alt="French language guide" 
-						class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-					/>
-				</div>
-				<div class="p-4">
-					<div class="flex items-center gap-2 mb-2">
-						<span class="text-xl">🇫🇷</span>
-						<h2 class="text-lg font-serif font-semibold text-foreground">French</h2>
-					</div>
-					<p class="text-foreground/70 text-sm mb-3">Complete guide from basics to fluency</p>
-					<div class="flex items-center justify-between">
-						<p class="font-medium text-foreground">$29.99</p>
-						<button class="text-sm px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-							Purchase
-						</button>
-					</div>
-				</div>
-			</div>
-
-			<!-- Spanish Guide -->
-			<div class="group bg-card border border-border/40 rounded-lg overflow-hidden hover:shadow-sm transition-all duration-300">
-				<div class="aspect-video w-full overflow-hidden bg-muted/20">
-					<img 
-						src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=300&q=80" 
-						alt="Spanish language guide" 
-						class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-					/>
-				</div>
-				<div class="p-4">
-					<div class="flex items-center gap-2 mb-2">
-						<span class="text-xl">🇪🇸</span>
-						<h2 class="text-lg font-serif font-semibold text-foreground">Spanish</h2>
-					</div>
-					<p class="text-foreground/70 text-sm mb-3">Complete guide from basics to fluency</p>
-					<div class="flex items-center justify-between">
-						<p class="font-medium text-foreground">$29.99</p>
-						<button class="text-sm px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-							Purchase
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Guide Features Section -->
-		<section class="mt-16 bg-muted/20 rounded-lg p-8">
-			<h2 class="text-2xl font-serif font-semibold text-foreground mb-8 text-center">What's Included in Each Guide</h2>
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-				<div class="flex flex-col items-center text-center p-3 rounded-lg hover:bg-muted/30 transition-colors">
-					<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-3">
-						<span class="text-xl">📚</span>
-					</div>
-					<h3 class="font-medium text-foreground mb-2">Grammar Guide</h3>
-					<p class="text-sm text-foreground/70">Comprehensive explanations of all key grammar points</p>
-				</div>
-				
-				<div class="flex flex-col items-center text-center p-3 rounded-lg hover:bg-muted/30 transition-colors">
-					<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-3">
-						<span class="text-xl">🔤</span>
-					</div>
-					<h3 class="font-medium text-foreground mb-2">Vocabulary Sets</h3>
-					<p class="text-sm text-foreground/70">2,000+ essential words organized by theme and usage frequency</p>
-				</div>
-				
-				<div class="flex flex-col items-center text-center p-3 rounded-lg hover:bg-muted/30 transition-colors">
-					<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-3">
-						<span class="text-xl">🗣️</span>
-					</div>
-					<h3 class="font-medium text-foreground mb-2">Conversation Guide</h3>
-					<p class="text-sm text-foreground/70">Practical dialogues for real-life situations with cultural notes</p>
-				</div>
-				
-				<div class="flex flex-col items-center text-center p-3 rounded-lg hover:bg-muted/30 transition-colors">
-					<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-3">
-						<span class="text-xl">📝</span>
-					</div>
-					<h3 class="font-medium text-foreground mb-2">Exercises</h3>
-					<p class="text-sm text-foreground/70">Practice activities with answer keys to reinforce learning</p>
+					<p class="text-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-8">Discover my carefully curated language fluency kits that take you from beginner to confident speaker with proven, expert-designed learning paths.</p>
+					<a href="#products" class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg px-6 py-3 transition-all duration-300 hover:-translate-y-1 shadow-md hover:shadow-lg">
+						Explore Fluency Kits
+					</a>
 				</div>
 			</div>
 		</section>
 
-		<!-- Coming Soon Section -->
-		<section class="mt-16 py-8">
-			<div class="border-t border-border pt-10 text-center">
-				<h2 class="text-2xl font-serif font-semibold text-foreground mb-4">Coming Soon</h2>
-				<p class="text-foreground/70 text-lg max-w-2xl mx-auto mb-6">Italian, Japanese, Mandarin, and more languages will be available soon. Sign up to be notified when new guides are released.</p>
-				<a href="#newsletter" class="inline-block px-6 py-3 rounded-md font-medium cursor-pointer transition-all duration-300 ease-in-out bg-transparent text-primary border border-primary hover:bg-primary/5 hover:-translate-y-0.5">
-					Join the waitlist
-				</a>
+		<!-- Featured Benefits -->
+		<section class="mb-16">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div class="flex flex-col items-center text-center p-6 bg-card rounded-xl shadow-sm border border-border/30 hover:shadow-md transition-all duration-300">
+					<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+						<span class="text-2xl">🗺️</span>
+					</div>
+					<h3 class="text-xl font-semibold mb-3">Complete Roadmap</h3>
+					<p class="text-foreground/70">Everything you need in one place, curated from years of personal experience and success. No more guesswork about what to learn next.</p>
+				</div>
+				
+				<div class="flex flex-col items-center text-center p-6 bg-card rounded-xl shadow-sm border border-border/30 hover:shadow-md transition-all duration-300">
+					<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+						<span class="text-2xl">⏱️</span>
+					</div>
+					<h3 class="text-xl font-semibold mb-3">Time-Saving Shortcuts</h3>
+					<p class="text-foreground/70">Skip years of trial and error with methods I've personally tested and refined through real-world language mastery.</p>
+				</div>
+				
+				<div class="flex flex-col items-center text-center p-6 bg-card rounded-xl shadow-sm border border-border/30 hover:shadow-md transition-all duration-300">
+					<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+						<span class="text-2xl">🔥</span>
+					</div>
+					<h3 class="text-xl font-semibold mb-3">Stay Motivated</h3>
+					<p class="text-foreground/70">Fun, practical, and engaging resources that keep you excited about learning, with clear milestones to celebrate your progress.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Product Grid -->
+		<section id="products" class="mb-16 scroll-mt-20">
+			<div class="flex flex-col md:flex-row justify-between items-center mb-8">
+				<div>
+					<h2 class="text-3xl md:text-4xl font-serif font-bold text-foreground mb-2">Language Fluency Kits</h2>
+					<p class="text-foreground/70">Structured packages with essential resources and language-specific tips to start your journey to fluency</p>
+				</div>
+				<div class="mt-4 md:mt-0">
+					<span class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+						<span class="mr-2">✨</span> Coming Soon
+					</span>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<!-- Spanish Kit -->
+				<div class="group bg-card border border-border/40 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+					<div class="relative">
+						<div class="aspect-video w-full overflow-hidden bg-muted/20">
+							<img 
+								src="/spain.avif" 
+								alt="Spanish fluency kit" 
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+							/>
+						</div>
+					</div>
+					<div class="p-6 flex-grow flex flex-col">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="text-2xl">🇪🇸</span>
+							<h3 class="text-2xl font-serif font-semibold text-foreground">Spanish Fluency Kit</h3>
+						</div>
+						<div class="mt-auto">
+							<button disabled class="w-full px-5 py-2.5 rounded-lg bg-muted text-muted-foreground font-medium">
+								Coming Soon
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- German Kit -->
+				<div class="group bg-card border border-border/40 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+					<div class="relative">
+						<div class="aspect-video w-full overflow-hidden bg-muted/20">
+							<img 
+								src="/german-flag.avif" 
+								alt="German fluency kit" 
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+							/>
+						</div>
+					</div>
+					<div class="p-6 flex-grow flex flex-col">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="text-2xl">🇩🇪</span>
+							<h3 class="text-2xl font-serif font-semibold text-foreground">German Fluency Kit</h3>
+						</div>
+						<div class="mt-auto">
+							<button disabled class="w-full px-5 py-2.5 rounded-lg bg-muted text-muted-foreground font-medium">
+								Coming Soon
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- French Kit -->
+				<div class="group bg-card border border-border/40 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+					<div class="relative">
+						<div class="aspect-video w-full overflow-hidden bg-muted/20">
+							<img 
+								src="/eiffel-tower.avif" 
+								alt="French fluency kit" 
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+							/>
+						</div>
+					</div>
+					<div class="p-6 flex-grow flex flex-col">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="text-2xl">🇫🇷</span>
+							<h3 class="text-2xl font-serif font-semibold text-foreground">French Fluency Kit</h3>
+						</div>
+						<div class="mt-auto">
+							<button disabled class="w-full px-5 py-2.5 rounded-lg bg-muted text-muted-foreground font-medium">
+								Coming Soon
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features Section -->
+		<section class="mb-16">
+			<div class="bg-card rounded-2xl overflow-hidden shadow-sm border border-border/40">
+				<div class="md:grid md:grid-cols-2 items-center">
+					<div class="p-8 md:p-12">
+						<h2 class="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">What Makes Our Kits Different</h2>
+						<p class="text-foreground/70 mb-8">Each fluency kit is the result of my personal language learning journey, containing resources I've personally used and refined over years of dedicated study. No trial and error needed—I've done all the work for you:</p>
+						
+						<ul class="space-y-4">
+							<li class="flex items-start">
+								<div class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary mr-3 mt-0.5">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+										<path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+									</svg>
+								</div>
+								<div>
+									<strong class="text-foreground font-medium">Complete Beginner-to-Fluent Path:</strong>
+									<span class="text-foreground/70"> Every resource with exact instructions on when and how to use them, all structured in the optimal learning sequence.</span>
+								</div>
+							</li>
+							<li class="flex items-start">
+								<div class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary mr-3 mt-0.5">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+										<path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+									</svg>
+								</div>
+								<div>
+									<strong class="text-foreground font-medium">Proven By Real Experience:</strong>
+									<span class="text-foreground/70"> Methods I've personally used to achieve fluency, combining research-backed techniques with real-world practical application.</span>
+								</div>
+							</li>
+							<li class="flex items-start">
+								<div class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary mr-3 mt-0.5">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+										<path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+									</svg>
+								</div>
+								<div>
+									<strong class="text-foreground font-medium">Motivation-Focused Approach:</strong>
+									<span class="text-foreground/70"> Fun, engaging materials that keep you excited to continue, with clear milestones that prevent the common problem of giving up.</span>
+								</div>
+							</li>
+							<li class="flex items-start">
+								<div class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary mr-3 mt-0.5">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+										<path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+									</svg>
+								</div>
+								<div>
+									<strong class="text-foreground font-medium">Skip Years of Trial and Error:</strong>
+									<span class="text-foreground/70"> I've put in the skin in the game so you don't have to waste time figuring out what works—just follow the path I've already tested.</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="bg-muted/20 h-full">
+						<img 
+							src="/study-books.avif" 
+							alt="Stack of books and language learning resources" 
+							class="w-full h-full object-cover"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Coming Soon / Waitlist Section -->
+		<section class="mb-8">
+			<div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 md:p-10 text-center">
+				<h2 class="text-2xl md:text-3xl font-serif font-semibold text-foreground mb-4">Be First in Line</h2>
+				<p class="text-foreground/70 text-lg max-w-2xl mx-auto mb-8">Join our waitlist to be notified when our fluency kits launch. Subscribers get early access and special pricing.</p>
+				<div class="max-w-md mx-auto">
+					<WaitlistNewsletterForm />
+				</div>
 			</div>
 		</section>
 	</div>

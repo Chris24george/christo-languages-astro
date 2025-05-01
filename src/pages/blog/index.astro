@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
 
 // Get all entries from the `blog` collection
 const posts = (await getCollection('blog')).sort(
@@ -33,6 +34,11 @@ const posts = (await getCollection('blog')).sort(
                 </li>
             ))}
         </ul>
+
+        <!-- Add Newsletter Form -->
+        <div class="mt-16 pt-12 border-t border-border">
+            <NewsletterForm />
+        </div>
     </div>
 </Layout>
 

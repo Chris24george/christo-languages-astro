@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import NewsletterForm from '../components/NewsletterForm.astro';
+import NewsletterHome from '../components/NewsletterHome.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -8,76 +8,71 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 
 <Layout>
 	<!-- Hero Section - Clean and focused -->
-	<section class="text-center py-8 md:py-16 px-6 max-w-4xl mx-auto">
-		<h1 class="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4 max-w-2xl mx-auto leading-tight">
-			Master Languages with Christo
+	<section class="text-center py-12 md:py-20 px-6 max-w-4xl mx-auto">
+		<h1 class="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4 md:mb-6 max-w-2xl mx-auto leading-tight">
+			Learn a Language the Smart Way.
 		</h1>
-		<p class="text-lg text-foreground/80 max-w-2xl mx-auto mb-8 md:mb-10">
-			Your hub for effective language learning through expert coaching, insightful blog content, and practical tools.
+		<p class="text-lg text-foreground/80 max-w-2xl mx-auto mb-10 md:mb-10">
+			I'm Christo. My journey to knowing <strong>10 languages</strong> has taught me what <strong><em>really</em></strong> works. I share those effective strategies, insights, and tools to help you reach your goals.
 		</p>
 		
-		<!-- Newsletter Form -->
-		<div class="max-w-2xl mx-auto mt-2 md:mt-0"> 
-			<NewsletterForm />
+		<!-- CTA Buttons -->
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
+			<a href="#newsletter-signup-section" 
+				class="w-full sm:w-auto px-6 py-3 rounded-lg font-medium cursor-pointer transition-all duration-300 ease-in-out bg-primary text-primary-foreground hover:opacity-90">
+				Get Language Tips
+			</a>
+			<a href="#services" 
+				class="w-full sm:w-auto px-6 py-3 rounded-lg font-medium cursor-pointer transition-all duration-300 ease-in-out bg-transparent border border-primary text-primary hover:bg-primary/10">
+				See How I Can Help You
+			</a>
 		</div>
 	</section>
 
 	<!-- Services Section - Consistent, clean card design -->
 	<section id="services" class="max-w-4xl mx-auto py-16 px-6">
-		<h2 class="text-2xl md:text-3xl font-serif font-bold text-foreground mb-3 text-center">Core Offerings</h2>
-		<p class="text-foreground/70 text-center mb-12 max-w-2xl mx-auto">Comprehensive resources to accelerate your language journey</p>
+		<h2 class="text-2xl md:text-3xl font-serif font-bold text-foreground mb-3 text-center">Your Toolkit</h2>
+		<p class="text-base text-foreground/70 text-center mb-12 max-w-2xl mx-auto">Your essential language learning resources, hand-picked from my own journey.</p>
 		
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			<!-- Blog Card -->
 			<div class="bg-white dark:bg-[#2A2440] ring-1 ring-primary/20 rounded-xl overflow-hidden">
 				<div class="p-8 flex flex-col h-full">
-					<div class="bg-primary/5 text-primary w-12 h-12 flex items-center justify-center rounded-full mb-5">
-						<span class="text-2xl">📝</span>
-					</div>
-					<h3 class="text-xl font-serif font-semibold text-foreground mb-3">Insightful Blog</h3>
-					<p class="flex-grow text-foreground/70 mb-5">Practical tips, evidence-based strategies, and inspiring stories for your language journey.</p>
+					<h3 class="text-xl font-serif font-semibold text-foreground mb-3">Blog</h3>
+					<p class="flex-grow text-foreground/70 mb-5">In-depth articles sharing effective language learning tips and strategies. <a href="#newsletter-signup-section" class="text-primary hover:underline font-medium">Subscribe to the newsletter</a> to get these posts and exclusive extras in your inbox.</p>
 					<a href="/blog" class="mt-auto font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center">
 						Explore Articles <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
 					</a>
 				</div>
 			</div>
-			
-			<!-- Coaching Card -->
+
+			<!-- Fluency Kits Card -->
 			<div class="bg-white dark:bg-[#2A2440] ring-1 ring-primary/20 rounded-xl overflow-hidden">
 				<div class="p-8 flex flex-col h-full">
-					<div class="bg-primary/5 text-primary w-12 h-12 flex items-center justify-center rounded-full mb-5">
-						<span class="text-2xl">👨‍🏫</span>
-					</div>
-					<h3 class="text-xl font-serif font-semibold text-foreground mb-3">1:1 Coaching</h3>
-					<p class="flex-grow text-foreground/70 mb-5">Personalized sessions tailored to your unique goals, learning style, and pace.</p>
-					<a href="/coaching" class="mt-auto font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center">
-						Book a Session <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-					</a>
-				</div>
-			</div>
-			
-			<!-- Materials Card -->
-			<div class="bg-white dark:bg-[#2A2440] ring-1 ring-primary/20 rounded-xl overflow-hidden">
-				<div class="p-8 flex flex-col h-full">
-					<div class="bg-primary/5 text-primary w-12 h-12 flex items-center justify-center rounded-full mb-5">
-						<span class="text-2xl">📚</span>
-					</div>
-					<h3 class="text-xl font-serif font-semibold text-foreground mb-3">Premium Materials</h3>
-					<p class="flex-grow text-foreground/70 mb-5">Curated guides and specialized learning packs to accelerate your language acquisition.</p>
+					<h3 class="text-xl font-serif font-semibold text-foreground mb-3">Fluency Kits</h3>
+					<p class="flex-grow text-foreground/70 mb-5">My complete kits, packed with everything you need to become fluent.</p>
 					<a href="/shop" class="mt-auto font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center">
 						Browse Collection <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
 					</a>
 				</div>
 			</div>
-			
+
+			<!-- Coaching Card -->
+			<div class="bg-white dark:bg-[#2A2440] ring-1 ring-primary/20 rounded-xl overflow-hidden">
+				<div class="p-8 flex flex-col h-full">
+					<h3 class="text-xl font-serif font-semibold text-foreground mb-3">1:1 Coaching</h3>
+					<p class="flex-grow text-foreground/70 mb-5">Stop guessing. Get personalized guidance designed around how <em>you</em> learn best.</p>
+					<a href="/coaching" class="mt-auto font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center">
+						Book a Session <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+					</a>
+				</div>
+			</div>
+
 			<!-- App Card -->
 			<div class="bg-white dark:bg-[#2A2440] ring-1 ring-primary/20 rounded-xl overflow-hidden">
 				<div class="p-8 flex flex-col h-full">
-					<div class="bg-primary/5 text-primary w-12 h-12 flex items-center justify-center rounded-full mb-5">
-						<span class="text-2xl">📱</span>
-					</div>
-					<h3 class="text-xl font-serif font-semibold text-foreground mb-3">iOS App</h3>
-					<p class="flex-grow text-foreground/70 mb-5">Practice anywhere with our interactive mobile app featuring smart exercises and tracking.</p>
+					<h3 class="text-xl font-serif font-semibold text-foreground mb-3">Practice App (Soon)</h3>
+					<p class="flex-grow text-foreground/70 mb-5">Soon, you'll be able to practice effectively anywhere with my custom-built app.</p>
 					<a href="/app" class="mt-auto font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center">
 						Coming Soon <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
 					</a>
@@ -86,97 +81,15 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 		</div>
 	</section>
 
-	<!-- Featured Guides Section - Simplified -->
-	<section class="py-16 px-6 bg-muted/20">
-		<div class="max-w-4xl mx-auto">
-			<h2 class="text-2xl md:text-3xl font-serif font-bold text-foreground mb-3 text-center">Language Guides</h2>
-			<p class="text-foreground/70 text-center mb-12 max-w-2xl mx-auto">Comprehensive materials to take you from beginner to fluent</p>
+	<!-- Newsletter Section -->
+	<section id="newsletter-signup-section" class="py-16 px-6 bg-muted/30 scroll-mt-20">
+		<div class="max-w-3xl mx-auto text-center">
+			<h2 class="text-2xl md:text-3xl font-serif font-bold text-foreground mb-3">Learn Languages Like a Polyglot</h2>
+			<p class="text-base text-foreground/70 mb-8 max-w-2xl mx-auto">Get exclusive tips, strategies, and resources, and be notified when I post new blogs.</p>
 			
-			<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-				<!-- German Guide -->
-				<div class="bg-white dark:bg-[#2A2440] ring-1 ring-primary/20 rounded-xl overflow-hidden">
-					<div class="aspect-video w-full overflow-hidden">
-						<img 
-							src="https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=300&q=80" 
-							alt="German language guide" 
-							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-						/>
-					</div>
-					<div class="p-5">
-						<div class="flex items-center gap-2 mb-2">
-							<span class="text-xl">🇩🇪</span>
-							<h3 class="text-lg font-serif font-semibold text-foreground">German</h3>
-						</div>
-						<p class="text-foreground/70 text-sm mb-3">Complete guide from basics to fluency</p>
-						<div class="flex items-center justify-between">
-							<p class="font-medium text-foreground">$29.99</p>
-							<a href="/shop" class="text-sm text-primary hover:underline underline-offset-4">View details</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- French Guide -->
-				<div class="bg-white dark:bg-[#2A2440] ring-1 ring-primary/20 rounded-xl overflow-hidden">
-					<div class="aspect-video w-full overflow-hidden">
-						<img 
-							src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=300&q=80" 
-							alt="French language guide" 
-							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-						/>
-					</div>
-					<div class="p-5">
-						<div class="flex items-center gap-2 mb-2">
-							<span class="text-xl">🇫🇷</span>
-							<h3 class="text-lg font-serif font-semibold text-foreground">French</h3>
-						</div>
-						<p class="text-foreground/70 text-sm mb-3">Complete guide from basics to fluency</p>
-						<div class="flex items-center justify-between">
-							<p class="font-medium text-foreground">$29.99</p>
-							<a href="/shop" class="text-sm text-primary hover:underline underline-offset-4">View details</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- Spanish Guide -->
-				<div class="bg-white dark:bg-[#2A2440] ring-1 ring-primary/20 rounded-xl overflow-hidden">
-					<div class="aspect-video w-full overflow-hidden">
-						<img 
-							src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=300&q=80" 
-							alt="Spanish language guide" 
-							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-						/>
-					</div>
-					<div class="p-5">
-						<div class="flex items-center gap-2 mb-2">
-							<span class="text-xl">🇪🇸</span>
-							<h3 class="text-lg font-serif font-semibold text-foreground">Spanish</h3>
-						</div>
-						<p class="text-foreground/70 text-sm mb-3">Complete guide from basics to fluency</p>
-						<div class="flex items-center justify-between">
-							<p class="font-medium text-foreground">$29.99</p>
-							<a href="/shop" class="text-sm text-primary hover:underline underline-offset-4">View details</a>
-						</div>
-					</div>
-				</div>
+			<div class="max-w-xl mx-auto">
+				<NewsletterHome />
 			</div>
-			
-			<div class="text-center">
-				<a href="/shop" 
-					class="inline-block px-5 py-3 rounded-lg font-medium cursor-pointer transition-all duration-300 ease-in-out bg-primary text-primary-foreground hover:opacity-90">
-					Explore All Guides
-				</a>
-			</div>
-		</div>
-	</section>
-
-	<!-- CTA Section - Clean, focused -->
-	<section class="py-20 px-6 text-center">
-		<div class="max-w-3xl mx-auto">
-			<h2 class="text-2xl md:text-3xl font-serif font-bold text-foreground mb-4">Ready to accelerate your language journey?</h2>
-			<p class="text-foreground/70 text-lg max-w-2xl mx-auto mb-8">Book a free 15-minute consultation to discuss how personalized coaching can help you reach fluency faster.</p>
-			<a href="/coaching" class="inline-block px-8 py-3 rounded-lg font-medium cursor-pointer transition-all duration-300 ease-in-out bg-primary text-primary-foreground hover:opacity-90">
-				Get Started
-			</a>
 		</div>
 	</section>
 </Layout>

@@ -1,9 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const pageTitle = "iOS App";
+import WaitlistNewsletterForm from '../components/WaitlistNewsletterForm.astro';
 ---
 
-<Layout>
-  <h1 class="text-4xl font-serif font-bold text-foreground mb-4">{pageTitle}</h1>
-  <p class="text-lg text-foreground">Welcome to the app page! Details coming soon.</p>
+<Layout title="ChristoLanguages App | Coming Soon">
+	<div class="container mx-auto px-4 py-8 md:py-16 max-w-5xl">
+		<!-- Main Content -->
+		<div class="text-center mb-12">
+			<div class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+				<span class="mr-2">🚀</span> Coming Soon
+			</div>
+			<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-4 leading-tight">Language Learning App</h1>
+			<p class="text-foreground/80 text-base sm:text-lg max-w-2xl mx-auto">Our upcoming app is designed to make learning languages convenient and engaging, wherever you are. Stay tuned for more details.</p>
+		</div>
+		
+		<!-- iPhone Mockup -->
+		<div class="flex justify-center mb-16">
+			<div class="relative w-56 sm:w-64 md:w-72 h-[450px] sm:h-[500px] md:h-[550px] bg-black dark:bg-black rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] border-[10px] sm:border-[12px] md:border-[14px] border-black dark:border-black overflow-hidden shadow-xl">
+				<div class="absolute top-0 inset-x-0">
+					<div class="h-4 sm:h-5 md:h-6 w-16 sm:w-20 md:w-24 bg-black dark:bg-black rounded-b-2xl sm:rounded-b-3xl mx-auto"></div>
+				</div>
+				<div class="h-full w-full bg-gray-100 dark:bg-gray-800 rounded-[1.75rem] sm:rounded-[2.25rem] md:rounded-[2.5rem] flex items-center justify-center">
+					<div class="text-center p-6 md:p-8">
+						<svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-14 sm:h-16 md:h-20 w-14 sm:w-16 md:w-20 text-primary/60 mb-4 md:mb-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+						</svg>
+						<h3 class="text-lg sm:text-xl font-semibold text-foreground mb-2">Language Learning</h3>
+						<p class="text-foreground/70 text-sm sm:text-base">On the go, interactive and effective</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Waitlist Section -->
+		<div class="max-w-md mx-auto bg-card rounded-xl p-6 sm:p-8 border border-border/40 shadow-sm">
+			<h2 class="text-xl sm:text-2xl font-semibold mb-4">Get Notified on Launch</h2>
+			<p class="text-foreground/70 mb-6">Join our waitlist to be the first to know when our app launches. Early subscribers will receive exclusive access.</p>
+			<WaitlistNewsletterForm />
+		</div>
+	</div>
 </Layout> 
