@@ -1,19 +1,19 @@
 ---
-title: 'My First Blog Post'
-description: 'This is the first post on my new Astro blog!'
-pubDate: '2024-07-26'
+title: 'Welcome to Christo Languages!'
+description: 'Your source for language learning tips, tricks, and deep dives.'
+pubDate: '2025-05-03T12:00:00-07:00'
 # heroImage: '/placeholder-hero.jpg' # Removed heroImage
-tags: ["astro", "blogging", "learning in public"]
+tags: ["language learning", "introduction", "welcome"]
 ---
 
-Welcome to my new blog! Here is where I plan to share my thoughts and learnings.
+Welcome to Christo Languages!
 
-## Getting Started
+I'm excited to start this journey of sharing insights into the fascinating world of language learning.
 
-This is built with Astro. It's pretty cool.
+Here, you'll find a variety of content, including:
 
-```javascript
-console.log("Hello Astro!");
-```
+*   **Tips and Tricks:** Practical advice to accelerate your learning process.
+*   **Deep Dives:** Exploring specific linguistic concepts, learning methodologies, and cultural nuances.
+*   **Resource Reviews:** Highlighting useful tools, apps, and materials.
 
-Stay tuned for more content! 
+My goal is to create a valuable resource for language learners of all levels. Stay tuned for regular updates! 

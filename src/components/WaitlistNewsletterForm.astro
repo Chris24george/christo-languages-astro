@@ -40,10 +40,10 @@
         </div>
     </form>
 
-    <!-- Confirmation Modal -->
-    <div id="confirmation-modal-ck" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm" aria-labelledby="modal-title-ck" role="dialog" aria-modal="true">
+    <!-- Confirmation Modal - Use classes for selection -->
+    <div class="confirmation-modal-template fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm" aria-modal="true" role="dialog">
         <div class="bg-card text-card-foreground rounded-xl shadow-xl max-w-md w-full mx-4 p-6 relative transform transition-all duration-300 ease-out scale-95 opacity-0">
-            <button id="close-modal-button-ck" class="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors" aria-label="Close modal">
+            <button class="close-modal-button absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors" aria-label="Close modal">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -54,12 +54,12 @@
                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z" clip-rule="evenodd" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-semibold text-foreground" id="modal-title-ck">Check Your Email!</h3>
+                <h3 class="modal-title-js text-lg font-semibold text-foreground">Check Your Email!</h3>
             </div>
             <p class="text-sm text-muted-foreground mb-5">
                 Thanks for signing up! Please check your inbox now to confirm your subscription and join the waitlist.
             </p>
-            <button id="close-modal-button-ok-ck" class="w-full px-4 py-2.5 rounded-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200">
+            <button class="close-modal-button w-full px-4 py-2.5 rounded-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200">
                 OK
             </button>
         </div>
@@ -105,100 +105,107 @@
         }
     }
     
-    /* Modal animation */
-    #confirmation-modal-ck.flex {
+    /* Modal animation - Use class selector */
+    .confirmation-modal-template.flex {
         display: flex;
     }
-    #confirmation-modal-ck.flex > div {
+    .confirmation-modal-template.flex > div {
         opacity: 1;
         transform: scale(1);
     }
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Select elements specific to this component instance
-        const componentRoot = document.querySelector('.convertkit-form-container'); 
-        if (!componentRoot) return;
+    // Function to initialize a single ConvertKit form instance
+    const initializeConvertKitForm = (formElement: HTMLFormElement) => {
+        const componentRoot = formElement.closest<HTMLElement>('.convertkit-form-container');
+        if (!componentRoot) {
+            console.error('Could not find root .convertkit-form-container for form', formElement);
+            return;
+        }
 
-        const form = componentRoot.querySelector<HTMLFormElement>('.formkit-form');
-        const modal = componentRoot.querySelector<HTMLElement>('#confirmation-modal-ck');
-        const formWrapper = form ? form.parentNode : null; // Get parent safely
-        const closeModalButtons = componentRoot.querySelectorAll('#close-modal-button-ck, #close-modal-button-ok-ck');
+        const modal = componentRoot.querySelector<HTMLElement>('.confirmation-modal-template');
+        const formWrapper = formElement.parentNode;
 
-        // Ensure all essential elements exist before proceeding
-        if (!form || !modal || !formWrapper || !(formWrapper instanceof Node)) {
-            console.error('ConvertKit form or modal elements not found within this component.');
+        if (!modal || !formWrapper || !(formWrapper instanceof Node)) {
+            console.error('ConvertKit form or modal elements not found within instance:', componentRoot);
             return;
         }
 
         const modalContent = modal.firstElementChild;
-        if (!modalContent) {
-             console.error('Modal content area not found.');
-             return;
+        if (!modalContent || !(modalContent instanceof HTMLElement)) {
+            console.error('Modal content area not found within instance:', componentRoot);
+            return;
         }
+
+        // --- Generate unique IDs for accessibility ---
+        const uniqueId = `modal-${Math.random().toString(36).substring(2, 9)}`;
+        modal.id = uniqueId;
+        const modalTitle = modal.querySelector('.modal-title-js'); 
+        if (modalTitle) {
+            const titleId = `${uniqueId}-title`;
+            modalTitle.id = titleId;
+            modal.setAttribute('aria-labelledby', titleId);
+        } else {
+            console.warn('Modal title element (.modal-title-js) not found for ID generation');
+        }
+
+        const closeModalButtons = modal.querySelectorAll('.close-modal-button');
 
         // Function to open the modal
         const openModal = () => {
             modal.classList.remove('hidden');
-            modal.classList.add('flex'); // Use flex for centering
-            // Trigger animation
+            modal.classList.add('flex');
             requestAnimationFrame(() => {
-                if (modalContent) {
-                    modalContent.classList.add('opacity-100', 'scale-100');
-                    modalContent.classList.remove('opacity-0', 'scale-95');
-                }
+                modalContent.classList.add('opacity-100', 'scale-100');
+                modalContent.classList.remove('opacity-0', 'scale-95');
             });
         };
 
         // Function to close the modal
         const closeModal = () => {
-            if (modalContent) {
-                modalContent.classList.remove('opacity-100', 'scale-100');
-                modalContent.classList.add('opacity-0', 'scale-95');
-            }
+            modalContent.classList.remove('opacity-100', 'scale-100');
+            modalContent.classList.add('opacity-0', 'scale-95');
             setTimeout(() => {
-                 modal.classList.add('hidden');
-                 modal.classList.remove('flex');
-                 // Reset form submitting state
-                 form.classList.remove('formkit-submitting');
-            }, 300); // Match modal animation duration
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                // Reset submitting state if needed (though ConvertKit might handle this)
+                formElement.classList.remove('formkit-submitting');
+            }, 300); // Match animation duration
         };
 
         // Close modal listeners
         closeModalButtons.forEach(button => {
             button.addEventListener('click', closeModal);
         });
-        // Close modal when clicking backdrop
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
                 closeModal();
             }
         });
 
-        // Add submitting class on submit start
-        form.addEventListener('submit', () => {
-            form.classList.add('formkit-submitting');
+        // --- Attach submit listener --- 
+        formElement.addEventListener('submit', (event) => {
+            console.log('Form submitted (defaultPrevented:', event.defaultPrevented, '), opening modal for:', componentRoot);
+            formElement.classList.add('formkit-submitting');
+            
+            // Open modal immediately on submit.
+            // Note: This assumes ConvertKit's script handles the actual submission.
+            openModal(); 
         });
 
-        // Observe ConvertKit's changes to show the modal on success
-        const observer = new MutationObserver((mutationsList) => {
-            for (const mutation of mutationsList) {
-                if (mutation.type === 'childList') {
-                    // Check if ConvertKit added its success message
-                    // Search within the form's wrapper, not the whole document
-                    const successMessage = formWrapper.querySelector('.formkit-alert-success');
-                    if (successMessage) {
-                        console.log('ConvertKit success message detected.');
-                        openModal();
-                        observer.disconnect(); // Stop observing once success is shown
-                        break; // Exit loop once handled
-                    }
-                }
-            }
-        });
+        console.log('Initialized ConvertKit form instance using submit listener:', componentRoot);
+    };
 
-        // Start observing the form's parent for added nodes (like the success message)
-        observer.observe(formWrapper, { childList: true, subtree: true });
+    // Initialize all ConvertKit forms on the page after DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        // Target forms more specifically using ConvertKit attributes
+        const allForms = document.querySelectorAll<HTMLFormElement>('.formkit-form[data-sv-form][data-uid]'); 
+        if (allForms.length === 0) {
+             console.warn('No ConvertKit forms found with data-sv-form and data-uid attributes.');
+        }
+        // Filter forms that are specifically within our component structure
+        const componentForms = Array.from(allForms).filter(form => form.closest('.convertkit-form-container'));
+        componentForms.forEach(initializeConvertKitForm);
     });
 </script>
