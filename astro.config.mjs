@@ -7,9 +7,12 @@ import { defineConfig } from 'astro/config';
 // Import the vite plugin directly
 import tailwindcss from "@tailwindcss/vite";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://christolanguages.com',
+
   // Remove the integrations array if it only contained tailwind
   // integrations: [tailwind()]
 
@@ -19,4 +22,6 @@ export default defineConfig({
     // @ts-ignore
     plugins: [tailwindcss()],
   },
+
+  integrations: [sitemap()],
 });
