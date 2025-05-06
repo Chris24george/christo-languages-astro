@@ -9,6 +9,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://christolanguages.com',
   // Remove the integrations array if it only contained tailwind
   // integrations: [tailwind()]
 
