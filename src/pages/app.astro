@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import WaitlistNewsletterForm from '../components/WaitlistNewsletterForm.astro';
+import AppWaitlistForm from '../components/AppWaitlistForm.astro';
 ---
 
 <Layout title="ChristoLanguages App | Coming Soon">
@@ -33,10 +33,10 @@ import WaitlistNewsletterForm from '../components/WaitlistNewsletterForm.astro';
 		</div>
 		
 		<!-- Waitlist Section -->
-		<div class="max-w-md mx-auto bg-card rounded-xl p-6 sm:p-8 border border-border/40 shadow-sm">
+		<div class="max-w-md mx-auto p-6 sm:p-8 text-center">
 			<h2 class="text-xl sm:text-2xl font-semibold mb-4">Get Notified on Launch</h2>
 			<p class="text-foreground/70 mb-6">Join our waitlist to be the first to know when our app launches. Early subscribers will receive exclusive access.</p>
-			<WaitlistNewsletterForm />
+			<AppWaitlistForm />
 		</div>
 	</div>
 </Layout> 
