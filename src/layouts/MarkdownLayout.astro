@@ -1,0 +1,18 @@
+---
+import Layout from './Layout.astro';
+---
+
+<Layout>
+  <div class="prose prose-base max-w-none 
+              prose-headings:font-serif prose-headings:text-foreground prose-headings:scroll-mt-20
+              prose-p:text-foreground/90 
+              prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary/80 hover:prose-a:underline
+              prose-strong:text-foreground prose-strong:font-semibold
+              prose-blockquote:border-l-4 prose-blockquote:border-primary/50 prose-blockquote:bg-primary/5 prose-blockquote:py-0.5 prose-blockquote:text-foreground/80 prose-blockquote:not-italic prose-blockquote:pl-4 prose-blockquote:pr-2 prose-blockquote:rounded-r-md
+              prose-code:text-foreground prose-code:bg-muted prose-code:p-1 prose-code:rounded prose-code:font-mono prose-code:text-sm before:prose-code:content-none after:prose-code:content-none
+              prose-pre:bg-[#1c1c2e] prose-pre:shadow-md prose-pre:border prose-pre:border-foreground/10 prose-pre:rounded-xl
+              prose-img:rounded-xl prose-img:shadow-md prose-img:border prose-img:border-border/20
+              prose-li:marker:text-primary prose-li:text-foreground/90">
+    <slot />
+  </div>
+</Layout> 
