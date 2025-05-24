@@ -13,9 +13,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: 'https://christolanguages.com',
 
-  // Remove the integrations array if it only contained tailwind
-  // integrations: [tailwind()]
-
   // Add the vite plugin config
   vite: {
     // Use @ts-ignore to suppress the type error
