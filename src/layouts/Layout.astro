@@ -21,6 +21,14 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 		<!-- Theme System Preference Handler (invisible) -->
 		<ThemeToggle />
 
+		<!-- RSS Feed Discovery -->
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="Christo Languages Blog RSS Feed"
+			href={new URL("rss.xml", Astro.site)}
+		/>
+
 		<title>{siteTitle}</title>
 	</head>
 	<body 
