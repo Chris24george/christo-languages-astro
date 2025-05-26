@@ -26,7 +26,7 @@ christo-languages-v2/
 ```
 
 ## 🚀 Features
-- **Blog:** Articles on language learning techniques, culture, and personal experiences (`/blog`)
+- **Blog:** Articles on language learning techniques, culture, and personal experiences (`https://blog.christolanguages.com`)
 - **Shop:** Purchase premium materials and guides (`/shop`)
 - **App:** iOS app for language learning (coming soon) (`/app`)
 - **Coaching:** Book personalized coaching sessions (`/coaching`)
